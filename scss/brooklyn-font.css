@@ -1,0 +1,29 @@
+@font-face {
+  font-family: Brooklyn-Normal;
+  src: url("/lib/brooklyn-font/OTF/Brooklyn-Normal.otf" ) format("opentype");
+}
+@font-face {
+  font-family: Brooklyn-Italic;
+  src: url("/lib/brooklyn-font/OTF/Brooklyn-Italic.otf" ) format("opentype");
+}
+@font-face {
+  font-family: Brooklyn-Bold;
+  src: url("/lib/brooklyn-font/OTF/Brooklyn-Bold.otf" ) format("opentype");
+}
+@font-face {
+  font-family: Brooklyn-BoldItalic;
+  src: url("/lib/brooklyn-font/OTF/Brooklyn-BoldItalic.otf" ) format("opentype");
+}
+@font-face {
+  font-family: Brooklyn-Heavy;
+  src: url("/lib/brooklyn-font/OTF/Brooklyn-Heavy.otf" ) format("opentype");
+}
+@font-face {
+  font-family: Brooklyn-SemiBold;
+  src: url("/lib/brooklyn-font/OTF/Brooklyn-SemiBold.otf" ) format("opentype");
+}
+@font-face {
+  font-family: Brooklyn-SemiBoldItalic;
+  src: url("//lib/brooklyn-font/OTF/Brooklyn-SemiBoldItalic.otf" ) format("opentype");
+}
+
