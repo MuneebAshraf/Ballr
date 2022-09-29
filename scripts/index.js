@@ -22,7 +22,7 @@ $(document).ready( () => {
 //
 //     window.requestAnimationFrame(scrollPlay);
 
-    document.querySelector('.video').playbackRate = .50;
+    // document.querySelector('.video').playbackRate = .50;
     
     let controller = new ScrollMagic.Controller();
 
@@ -251,3 +251,25 @@ $(document).ready( () => {
             return Math.random() * (max - min) + min;
 }
 })
+
+
+//fade out on scroll// Kilde: https://coolcssanimation.com/element-fade-out-on-scroll/
+
+function scrollHandler() {
+    var element = document.getElementById('test123');
+  
+    var distanceToTop = window.pageYOffset + element.getBoundingClientRect().top;
+    var elementHeight = element.offsetHeight;
+      var scrollTop = document.documentElement.scrollTop;
+      
+      var opacity = 1;
+      
+      if (scrollTop > distanceToTop) {
+          opacity = 1 - (scrollTop - distanceToTop) / elementHeight;
+      }
+      
+      if (opacity >= 0) {
+          element.style.opacity = opacity;
+      }}
+  
+  window.addEventListener('scroll', scrollHandler);
