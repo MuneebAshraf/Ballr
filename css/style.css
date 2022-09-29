@@ -98,67 +98,48 @@ section:first-of-type {
   color: white;
 }
 
-header {
-  position: sticky;
-  top: 0;
-  background-color: #1C1C1C;
-  min-height: 100px;
-  width: 100%;
-  display: grid;
-  grid-template-rows: 1em 1fr 1em;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: center;
+nav.navbar {
+  background-color: #1C1C1C !important;
   border-bottom: 2px solid #4b4b4b;
-  z-index: 999;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-header.white {
+nav.navbar.white {
   background-color: #F5F5F5;
 }
-header.white a {
+nav.navbar.white a {
   color: #1C1C1C;
 }
-header.white .btn {
+nav.navbar.white .btn {
   border-color: #1C1C1C;
   box-shadow: 0px 2px 2px #3E3E3E;
 }
-header.grow {
-  min-height: 150px;
-}
-header.grow .logo {
-  width: 40%;
-}
-header.grow a {
-  font-size: 1.25rem;
-}
-header .logo {
-  grid-area: 2/1/span 1/span 1;
-  justify-self: center;
-  width: 30%;
+nav.navbar .logo {
+  width: 7vw;
+  min-width: 4.5em;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-header .logo svg {
+nav.navbar .logo svg {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-header .sub-pages {
+nav.navbar .sub-pages {
   grid-area: 2/3/span 1/-1;
   margin-left: auto;
   padding: 0 4em;
   font-size: 1rem;
 }
-header .sub-pages a {
+nav.navbar .sub-pages a {
   font-family: Brooklyn-Bold, sans-serif;
   margin: 0 1.5em;
   text-transform: uppercase;
