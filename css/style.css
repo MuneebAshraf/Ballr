@@ -602,7 +602,7 @@ canvas {
   font-size: 30px;
   -webkit-text-fill-color: transparent;
   /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 0.1px;
+  -webkit-text-stroke-width: 1.1px;
   -webkit-text-stroke-color: #C8B090;
 }
 
@@ -612,7 +612,7 @@ canvas {
 
 .mail::after {
   content: "";
-  background: url("../lib/Pil.svg");
+  background: url("/lib/Pil.svg");
   width: 30px;
   height: 30px;
   background-size: contain;
@@ -648,7 +648,7 @@ canvas {
 .linkedin::before {
   content: "";
   display: inline-flex;
-  background: url(../lib/Linkedin.png);
+  background: url("../lib/Linkedin.png");
   background-size: cover;
   width: 30px;
   height: 30px;
@@ -658,7 +658,7 @@ canvas {
 .facebook::before {
   content: "";
   display: inline-flex;
-  background: url(../lib/facebook.png);
+  background: url("../lib/facebook.png");
   background-size: cover;
   width: 40px;
   height: 40px;
@@ -668,7 +668,7 @@ canvas {
 .instagram::before {
   content: "";
   display: inline-flex;
-  background: url(../lib/Instagram.png);
+  background: url("../lib/Instagram.png");
   background-size: cover;
   width: 30px;
   height: 30px;
