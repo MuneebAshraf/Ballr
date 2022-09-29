@@ -83,6 +83,88 @@ section {
 
 }
 
+header {
+  position: sticky;
+  top: 0;
+  background-color: $background;
+  min-height: 100px;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1em 1fr 1em;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  border-bottom: 2px solid $border-grey;
+  z-index: 999;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+
+  &.white {
+    background-color: $white;
+
+    a {
+      color: $background;
+    }
+
+    .btn {
+      border-color: $background;
+      box-shadow: 0px 2px 2px #3E3E3E;
+    }
+  }
+
+  &.grow {
+    min-height: 150px;
+
+    .logo {
+      width: 40%;
+    }
+
+    a {
+      font-size: 1.25rem;
+    }
+  }
+
+  .logo {
+    grid-area: 2 / 1 / span 1 / span 1;
+    justify-self: center;
+    width: 30%;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+
+    svg {
+      -webkit-transition: all .3s;
+      -moz-transition: all .3s;
+      -ms-transition: all .3s;
+      -o-transition: all .3s;
+      transition: all .3s;
+    }
+  }
+
+  .sub-pages {
+    grid-area: 2 / 3 / span 1 / -1;
+    margin-left: auto;
+    padding: 0 4em;
+    font-size: 1rem;
+
+    a {
+      font-family: Brooklyn-Bold, sans-serif;
+      margin: 0 1.5em;
+      text-transform: uppercase;
+      -webkit-transition: all .3s;
+      -moz-transition: all .3s;
+      -ms-transition: all .3s;
+      -o-transition: all .3s;
+      transition: all .3s;
+    }
+  }
+}
+
+
 nav.navbar {
   background-color: $background !important;
   border-bottom: 2px solid $border-grey;
@@ -94,10 +176,6 @@ nav.navbar {
 
   .navbar-nav {
     gap: 2vw;
-  }
-
-  #navmenu {
-
   }
 
   &.white {
@@ -696,7 +774,7 @@ canvas {
 
 .mail::after {
   content: "";
-  background: url("../lib/Pil.svg");
+  background: url("/Ballr/lib/Pil.svg");
   width: 30px;
   height: 30px;
   background-size: contain;
@@ -732,7 +810,7 @@ canvas {
 .linkedin::before {
   content: "";
   display: inline-flex;
-  background: url(../lib/Linkedin.png);
+  background: url(/Ballr/lib/Linkedin.png);
   background-size: cover;
   width: 30px;
   height: 30px;
@@ -743,7 +821,7 @@ canvas {
 .facebook::before {
   content: "";
   display: inline-flex;
-  background: url(../lib/facebook.png);
+  background: url(/Ballr/lib/facebook.png);
   background-size: cover;
   width: 40px;
   height: 40px;
@@ -753,7 +831,7 @@ canvas {
 .instagram::before {
   content: "";
   display: inline-flex;
-  background: url(../lib/Instagram.png);
+  background: url(/Ballr/lib/Instagram.png);
   background-size: cover;
   width: 30px;
   height: 30px;

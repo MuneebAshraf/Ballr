@@ -3,6 +3,7 @@ $(document).ready( () => {
     let controller = new ScrollMagic.Controller();
 
     if ($('#index').length > 0) {
+
         new ScrollMagic.Scene({
             triggerHook: "onLeave",
             triggerElement: $('#index'),
