@@ -1,36 +1,12 @@
 $(document).ready( () => {
-//
-//     var frameNumber = 0, // start video at frame 0
-//         // lower numbers = faster playback
-//         playbackConst = 1000, // Set to 1000 to make the playback slower
-//         // get page height from video duration
-//         setHeight = document.getElementById("index"),
-//         // select video element         
-//         vid = document.querySelector('.video')
-//
-// // dynamically set the page height according to video length
-//     vid.addEventListener('loadedmetadata', function () {
-//         setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
-//     });
-//
-// // Use requestAnimationFrame for smooth playback
-//     function scrollPlay() {
-//         var frameNumber = window.pageYOffset / playbackConst;
-//         vid.currentTime = frameNumber;
-//         window.requestAnimationFrame(scrollPlay);
-//     }
-//
-//     window.requestAnimationFrame(scrollPlay);
 
-    // document.querySelector('.video').playbackRate = .50;
-    
     let controller = new ScrollMagic.Controller();
 
     if ($('#index').length > 0) {
         new ScrollMagic.Scene({
             triggerHook: "onLeave",
             triggerElement: $('#index'),
-            offset: $('.header').height()
+            offset: $('.nav').height()
         })
             .addTo(controller)
             //.setPin($('.product-vid'))
@@ -99,7 +75,7 @@ $(document).ready( () => {
 
         // fade the circles in and then fade text with lines
         let timelineForSection4 = new TimelineMax();
-        timelineForSection4.fromTo($('.container.ring'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1}, ".2")
+        timelineForSection4.fromTo($('.product-container.ring'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1}, ".2")
         timelineForSection4.fromTo($('.inner.ring'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1}, ".4")
         timelineForSection4.fromTo($('.circle'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1},".6")
         timelineForSection4.fromTo($('.product-name'), {opacity: 0, x: -300}, {opacity: 1, x: 100}, "<")
@@ -252,24 +228,3 @@ $(document).ready( () => {
 }
 })
 
-
-//fade out on scroll// Kilde: https://coolcssanimation.com/element-fade-out-on-scroll/
-
-function scrollHandler() {
-    var element = document.getElementById('test123');
-  
-    var distanceToTop = window.pageYOffset + element.getBoundingClientRect().top;
-    var elementHeight = element.offsetHeight;
-      var scrollTop = document.documentElement.scrollTop;
-      
-      var opacity = 1;
-      
-      if (scrollTop > distanceToTop) {
-          opacity = 1 - (scrollTop - distanceToTop) / elementHeight;
-      }
-      
-      if (opacity >= 0) {
-          element.style.opacity = opacity;
-      }}
-  
-  window.addEventListener('scroll', scrollHandler);

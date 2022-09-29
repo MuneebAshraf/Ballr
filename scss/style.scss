@@ -92,6 +92,14 @@ nav.navbar {
   -o-transition: all .3s;
   transition: all .3s;
 
+  .navbar-nav {
+    gap: 2vw;
+  }
+
+  #navmenu {
+
+  }
+
   &.white {
     background-color: $white;
 
@@ -148,7 +156,7 @@ nav.navbar {
     z-index: 1;
     position: fixed;
     width: 100%;
-    display: flex;
+    display: none;
     place-content: center;
     place-items: center;
 
@@ -300,7 +308,7 @@ nav.navbar {
       aspect-ratio: 1;
     }
 
-    .container {
+    .product-container {
       grid-area: 1 / 1 / -1 / -1;
       height: 70vh;
       display: flex;
