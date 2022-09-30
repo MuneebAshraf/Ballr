@@ -48,6 +48,7 @@ section {
   gap: .5em;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
+  color: $white;
 
   &:first-of-type {
     min-height: calc(100vh - 150px);
@@ -634,7 +635,7 @@ nav.navbar {
   position: absolute;
   right: 10%;
   // transform: translateX(-50%);
-  z-index: 0;
+  z-index: -1;
 }
 
 

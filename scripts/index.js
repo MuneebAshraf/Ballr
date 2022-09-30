@@ -3,6 +3,9 @@ $(document).ready( () => {
     let controller = new ScrollMagic.Controller();
 
     if ($('#index').length > 0) {
+        
+        let scrolltop = pageYOffset;
+        
 
         new ScrollMagic.Scene({
             triggerHook: "onLeave",
