@@ -520,10 +520,123 @@ nav.navbar {
   }
 
   .section-10 {
-    background-color: $background;
+    background-color: $background;    
   }
 
 }
+
+#scale1, #scale2, #scale3, #scale4 {
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+#section-10 {
+  display: flex !important;
+  position: relative;
+  
+}
+
+.position-box-1 {
+  position: absolute;
+  top: 5%;
+  right: 20%;
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+.position-box-2 {
+  position: absolute;
+  top: 40%;
+  right: 10%;
+}
+
+.position-box-3 {
+  position: absolute;
+  top: 40%;
+  right: 30%;
+}
+
+.male-images {
+  display: flex;
+}
+
+.health-image {
+  margin-right: 1vw;
+}
+
+.statisticBox {
+  place-content: center;
+  position: relative;
+  width: fit-content;
+}
+.statisticBox .statistic-image {
+  min-width: 100%;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  transform: scale(0.8);
+}
+.statisticBox p {
+  text-align: center;
+}
+
+.stastic-text {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.stastic-text span {
+  font-weight: 700;
+}
+
+
+#flexContainer {
+  display: block !important;
+  position: relative;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  line-height: 2;
+}
+#flexContainer .flex-mental-health {
+  display: flex;
+  gap: 3vw;
+  align-items: center;
+ 
+}
+
+.flex-mental-health  {
+
+  z-index: 1;
+  
+  
+  
+}
+
+.male-images {
+  
+  h5 {
+    z-index: 1;
+  }
+}
+.bagground-image-statistic {
+  width: 60vw;
+  height: 70vh;
+  display: grid;
+  place-content: center;
+  background-color: #181818;
+  box-shadow: 1px 6px 4px 3px rgba(0,0,0,0.45);
+  -webkit-box-shadow: 1px 6px 4px 3px rgba(0,0,0,0.45);
+  -moz-box-shadow: 1px 6px 4px 3px rgba(0,0,0,0.45);
+  border-radius: 5rem;
+  position: absolute;
+  right: 10%;
+  // transform: translateX(-50%);
+  z-index: 0;
+}
+
 
 #ourVision {
   .container {
