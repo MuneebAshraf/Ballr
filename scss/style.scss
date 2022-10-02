@@ -14,7 +14,6 @@ a {
 
 .btn {
   padding: .5em 2em;
-  border: 1px solid white;
   border-radius: 5px;
 }
 
@@ -190,10 +189,6 @@ nav.navbar {
       color: $background;
     }
 
-    .btn {
-      border-color: $background;
-      box-shadow: 0px 2px 2px #3E3E3E;
-    }
   }
 
   .logo {
@@ -1216,6 +1211,7 @@ canvas {
   .article-wrapper {
     display: flex;
     gap: 3vw;
+    width: 70vw;
   }
 
   .article-text h3 {
@@ -1225,8 +1221,7 @@ canvas {
 
   .article-text,
   .article-aside {
-    width: 40vw;
-    line-height: 1.5;
+    padding: 1em;
   }
 
   .article-aside a {
@@ -1236,7 +1231,6 @@ canvas {
   }
 
   .article-aside {
-    padding-left: 15vw;
     color: $background  !important;
     display: flex;
     flex-direction: column;
