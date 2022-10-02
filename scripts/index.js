@@ -79,16 +79,9 @@ $(document).ready( () => {
             .setTween(fadeoverTimeline)
             .addTo(controller);
 
-        //make sliding-logo grow
-        let section3Timeline = new TimelineMax()
-        section3Timeline.to($('.sliding-logo'), {scale:11.8})
-        new ScrollMagic.Scene({
-            duration: "100%",
-            triggerElement: $('.sliding-logo'),
-            triggerHook: 0.4,
-        })
-            .setTween(section3Timeline)
-            .addTo(controller);
+            
+
+        
 
         // fade the circles in and then fade text with lines
         let timelineForSection4 = new TimelineMax();
@@ -131,6 +124,29 @@ $(document).ready( () => {
             .setTween(TweenMax.from($('.water__title'), 1, {backgroundPositionY: 300} ))
             .addTo(controller)
 
+
+            //make body change color when entering "Section-9"
+        let fadeoverrTimeline = new TimelineMax();
+        fadeoverrTimeline.to($('body'), {autoAlpha: 1, backgroundColor:"#1C1C1C"})
+        new ScrollMagic.Scene({
+            duration: "100%",
+            triggerElement: $('.section-9'),
+            triggerHook: "onEnter",
+        })
+            .setTween(fadeoverrTimeline)
+            .addTo(controller);
+            
+
+        //make sliding-logo grow
+        let section3Timeline = new TimelineMax()
+        section3Timeline.to($('.sliding-logo'), {scale:11.8})
+        new ScrollMagic.Scene({
+            duration: "100%",
+            triggerElement: $('.sliding-logo'),
+            triggerHook: 0.4,
+        })
+            .setTween(section3Timeline)
+            .addTo(controller);
     // // create a scene for sectione 8
     //     let section8Timeline = new TimelineMax()
     //     let array = $('.section-8 span:not(.excluded)');

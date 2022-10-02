@@ -450,15 +450,7 @@ nav.navbar .sub-pages a {
   transition: all 0.3s;
 }
 #index .section-9 {
-  display: flex !important;
-}
-#index .section-9 .brown-gradient {
-  grid-column: 5/span 2;
-  aspect-ratio: 1;
-  box-shadow: 0 0 5px 10px #555;
-  border-radius: 50%;
-  background: rgb(200, 176, 144);
-  background: radial-gradient(circle, rgb(200, 176, 144) 0%, rgba(28, 28, 28, 0) 100%);
+  height: calc(100vh - 100px);
 }
 #index .section-10 {
   background-color: #1C1C1C;
@@ -797,25 +789,15 @@ canvas {
   font-weight: bold;
 }
 
-.socials {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5vw;
-}
-
 .socials a {
   margin-left: 5vw;
   margin-top: 2vh;
 }
 
 .linkedin::before {
-  content: "";
+  content: "\f472";
   display: inline-flex;
-  background: url(/lib/Linkedin.png);
-  background-size: cover;
-  width: 30px;
-  height: 30px;
+  font-size: 20px;
   margin-right: 1vw;
 }
 
