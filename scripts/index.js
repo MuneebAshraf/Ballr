@@ -95,13 +95,13 @@ $(document).ready( () => {
         timelineForSection4.fromTo($('.product-container.ring'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1}, ".2")
         timelineForSection4.fromTo($('.inner.ring'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1}, ".4")
         timelineForSection4.fromTo($('.circle'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1},".6")
-        timelineForSection4.fromTo($('.product-name'), {opacity: 0, x: -300}, {opacity: 1, x: 100}, "<")
+        timelineForSection4.fromTo($('.product-name'), {opacity: 0, x: -300}, {opacity: 1, x: 0})
         timelineForSection4.fromTo($('#lines'), {opacity: 0, width: 0}, {opacity: 1, width: "33%"}, "<")
 
         new ScrollMagic.Scene({
-            duration: "45%",
+            duration: "40%",
             triggerElement: $('.section-4'),
-            triggerHook: .55
+            triggerHook: .5
         })
             .setTween(timelineForSection4)
             .addTo(controller);
@@ -162,78 +162,50 @@ $(document).ready( () => {
         let path = document.querySelector('.progress__progress')
         let pathLength = document.querySelector('.progress__progress').getTotalLength();
         path.setAttribute('style', 'stroke-dashoffset:'+pathLength * .99 +';stroke-dasharray:'+pathLength)
+        let timeline = new TimelineMax()
+
+        timeline.to($('.illustration .dots'), 1, {strokeWidth: 0 })
+        timeline.to($('.no .no1 :last-child'), 1, {y: '10%', autoAlpha: 0 }, '<')
+        timeline.to($('.description.no1'), 1, {y: '-20%', autoAlpha: 0 }, '<')
+        timeline.to($('.body .body__text__no1'), 1, {y: '-10%', autoAlpha: 0 }, '<')
+        timeline.to($('.progress-2 li:nth-child(1)'), 1, {opacity: 0.3}, '<')
+
+        timeline.from($('.no .no2 :last-child'), 3, {y: '-100%',autoAlpha: 0, repeat: 1, yoyo: true}, '>')
+        timeline.to($('.illustration .square'), 2,  { strokeDashoffset: 0, delay: 1, repeat:1, yoyo: true}, '<')
+        timeline.to($('.description.no2'), 2, {y: '-20%', autoAlpha: 1, repeat: 1, yoyo: true }, '<')
+        timeline.to($('.progress-2 li:nth-child(2)'), 2, {opacity: 1, repeat: 1, yoyo: true}, '<')
+        timeline.fromTo($('.body .body__text__no2'), 2, {y: '10%', autoAlpha: 0}, {y: '0', autoAlpha: 1}, '<')
+        timeline.to($('.body .body__text__no2'), 2, {y: '-10%', autoAlpha: 0}, '>' )
+
+        timeline.from($('.no .no3 :last-child'), 1, {y: '20%', opacity: 0 })
+        timeline.to($('.illustration .circle'), 1, {strokeDashoffset: 0, yoyo: true, width: 0, height: 0}, '<')
+        timeline.to($('.description.no3'), 1, {y: '-20%', autoAlpha: 1 }, '<')
+        timeline.to($('.progress-2 li:nth-child(3)'), 1, {opacity: 1}, '<')
+        timeline.fromTo($('.body .body__text__no3'), 1, {y: "10%", autoAlpha: 0 }, {y: 0, autoAlpha: 1 }, '<')
 
         new ScrollMagic.Scene({
-            duration: $('.container').height(),
-            triggerElement: $('.container'),
-            triggerHook: "onLeave",
-        })
-            .addIndicators(
-                {name: 'container', colorTrigger: 'red', indent: 100}
-            )
-            .addTo(controller)
-
-        let timeline1 = new TimelineMax()
-        //let timeline2 = new TimelineMax()
-        //let timeline3 = new TimelineMax()
-
-        timeline1.to($('.illustration .dots'), 1, {strokeWidth: 0 })
-        timeline1.to($('.no .no1 :last-child'), 1, {y: '10%', autoAlpha: 0 }, '<')
-        timeline1.to($('.description.no1'), 1, {y: '-20%', autoAlpha: 0 }, '<')
-        timeline1.to($('.body .body__text__no1'), 1, {y: '-10%', autoAlpha: 0 }, '<')
-        timeline1.to($('.progress-2 li:nth-child(1)'), 1, {opacity: 0.3}, '<')
-        //timeline1.to($('.section-1'), 1, {y: '-20%' })
-        //timeline1.to($('.section *:not(.bg)'), {autoAlpha: 0, y: "-20%"})
-
-
-        timeline1.from($('.no .no2 :last-child'), 3, {y: '-100%',autoAlpha: 0, repeat: 1, yoyo: true}, '>')
-        timeline1.to($('.illustration .square'), 2,  { strokeDashoffset: 0, delay: 1, repeat:1, yoyo: true}, '<')
-        timeline1.to($('.description.no2'), 2, {y: '-20%', autoAlpha: 1, repeat: 1, yoyo: true }, '<')
-        timeline1.to($('.progress-2 li:nth-child(2)'), 2, {opacity: 1, repeat: 1, yoyo: true}, '<')
-        timeline1.fromTo($('.body .body__text__no2'), 2, {y: '10%', autoAlpha: 0}, {y: '0', autoAlpha: 1}, '<')
-        timeline1.to($('.body .body__text__no2'), 2, {y: '-10%', autoAlpha: 0}, '>' )
-
-        //timeline1.to($('.section-2 .no *'), .2, {autoAlpha: 1, y: 0}, )
-        //timeline1.fromTo($('.section-2 > *:not(.bg, .no)'), {autoAlpha: 0, y: "-20%"}, {autoAlpha: 1, y: 0}, '<')
-
-
-        timeline1.from($('.no .no3 :last-child'), 1, {y: '20%', opacity: 0 })
-        timeline1.to($('.illustration .circle'), 1, {strokeDashoffset: 0, yoyo: true, width: 0, height: 0}, '<')
-        timeline1.to($('.description.no3'), 1, {y: '-20%', autoAlpha: 1 }, '<')
-        timeline1.to($('.progress-2 li:nth-child(3)'), 1, {opacity: 1}, '<')
-        timeline1.fromTo($('.body .body__text__no3'), 1, {y: "10%", autoAlpha: 0 }, {y: 0, autoAlpha: 1 }, '<')
-        //timeline3.fromTo($('.section-3  > *:not(.bg, .no)'), 1, {autoAlpha: 0, y: "-20%"}, {autoAlpha: 1, y: 0})
-        //timeline3.fromTo($('.section-3 .no *'), {autoAlpha: 0, y: "-5%"}, {autoAlpha: 1, y: 0}, '<')
-
-        let sect1 = new ScrollMagic.Scene({
-            duration: $('.container').height(),
+            duration: "100%",
             triggerElement: $('.section'),
             triggerHook: "onLeave",
-            offset: -$('.header').height()
+            offset: -$('.navbar').outerHeight()
 
         })
             .setPin($('.section'))
-            .setClassToggle($('.progress-2 li:nth-child(1)'), 'active')
-            .setTween(timeline1)
+            .setTween(timeline)
             .addIndicators({
                 name: "section1",
-                indent: 200
+                indent: 100
             })
             .on("progress", function (e) {
                 let path = document.querySelector('.progress__progress')
                 let pathLength = document.querySelector('.progress__progress').getTotalLength();
 
                 let percentage = 1- (e.progress.toFixed(2));
-                console.log(percentage)
-                console.log(e.progress);
-
 
                 if (0.01 <= percentage && percentage <= 0.99)
                     path.setAttribute('style', 'stroke-dasharray:'+pathLength+';stroke-dashoffset:'+pathLength * percentage)
-                //path.attr('y2', percentage+'%');
             })
             .addTo(controller)
-
     }
 
 
