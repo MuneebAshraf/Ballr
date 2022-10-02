@@ -44,16 +44,12 @@ body {
 
 section {
   font-family: Brooklyn-Normal, sans-serif;
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 104px);
   display: grid !important;
   gap: .5em;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
   color: $white;
-
-  &:first-of-type {
-    min-height: calc(100vh - 150px);
-  }
 }
 
 #navbarBootstrap {
@@ -333,7 +329,7 @@ nav.navbar {
   }
 
   section.section-3 {
-    max-height: calc(100vh - 100px);
+    max-height: calc(100vh - 104px);
     white-space: nowrap;
     overflow: hidden;
 
@@ -511,7 +507,7 @@ nav.navbar {
   }
 
   .section-9 {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 104px);
     
   }
 
@@ -636,11 +632,10 @@ nav.navbar {
 
 #ourVision {
   .body-container {
-    height: calc(200vh - 200px);
   }
 
   section {
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 104px);
     padding: 0 4em;
     color: $blue;
     grid-template-areas:
@@ -649,8 +644,6 @@ nav.navbar {
       "progress body body body ."
       "progress body body body ."
       ". . . . . ";
-
-    &.section {}
   }
 
   .progress {
@@ -802,6 +795,7 @@ nav.navbar {
     font-size: 17rem;
     line-height: 1;
     opacity: 0.15;
+    margin: 0;
   }
 
   .illustration {
@@ -1003,13 +997,13 @@ canvas {
   // background-position: center;
   // background-repeat: no-repeat;
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 104px);
 }
 
 .journal-intro {
   text-align: center;
   position: relative;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 104px);
   width: 100%;
   background: rgb(24, 43, 59);
   background: linear-gradient(360deg, rgba(24, 43, 59, 1) 0%, rgba(35, 53, 68, 0.9671218829328606) 9%, rgba(68, 83, 97, 0.92) 32%, rgba(109, 121, 132, 0.86) 56%, rgba(238, 239, 241, 1) 100%);

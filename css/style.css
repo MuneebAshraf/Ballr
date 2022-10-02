@@ -68,15 +68,12 @@ body.white {
 
 section {
   font-family: Brooklyn-Normal, sans-serif;
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 104px);
   display: grid !important;
   gap: 0.5em;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
   color: #F5F5F5;
-}
-section:first-of-type {
-  min-height: calc(100vh - 150px);
 }
 
 #navbarBootstrap .test133 {
@@ -234,7 +231,7 @@ nav.navbar .sub-pages a {
   position: fixed;
   bottom: 15%;
   width: 100%;
-  display: flex;
+  display: none;
   place-content: center;
   place-items: center;
 }
@@ -308,7 +305,7 @@ nav.navbar .sub-pages a {
   translate: 0;
 }
 #index section.section-3 {
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 104px);
   white-space: nowrap;
   overflow: hidden;
 }
@@ -450,7 +447,7 @@ nav.navbar .sub-pages a {
   transition: all 0.3s;
 }
 #index .section-9 {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 104px);
 }
 #index .section-10 {
   background-color: #1C1C1C;
@@ -562,11 +559,8 @@ nav.navbar .sub-pages a {
   z-index: -1;
 }
 
-#ourVision .body-container {
-  height: calc(200vh - 200px);
-}
 #ourVision section {
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 104px);
   padding: 0 4em;
   color: #182B3B;
   grid-template-areas: "no no . illustration ." "no no . illustration ." "progress body body body ." "progress body body body ." ". . . . . ";
@@ -696,6 +690,7 @@ nav.navbar .sub-pages a {
   font-size: 17rem;
   line-height: 1;
   opacity: 0.15;
+  margin: 0;
 }
 #ourVision .illustration {
   grid-area: illustration;
@@ -868,12 +863,12 @@ canvas {
   display: flex;
   place-content: center;
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 104px);
 }
 #ballr-journal .journal-intro {
   text-align: center;
   position: relative;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 104px);
   width: 100%;
   background: rgb(24, 43, 59);
   background: linear-gradient(360deg, rgb(24, 43, 59) 0%, rgba(35, 53, 68, 0.9671218829) 9%, rgba(68, 83, 97, 0.92) 32%, rgba(109, 121, 132, 0.86) 56%, rgb(238, 239, 241) 100%);

@@ -181,10 +181,10 @@ $(document).ready( () => {
         let timeline = new TimelineMax()
 
         timeline.to($('.illustration .dots'), 1, {strokeWidth: 0 })
-        timeline.to($('.no .no1 :last-child'), 1, {y: '10%', autoAlpha: 0 }, '<')
         timeline.to($('.description.no1'), 1, {y: '-20%', autoAlpha: 0 }, '<')
         timeline.to($('.body .body__text__no1'), 1, {y: '-10%', autoAlpha: 0 }, '<')
         timeline.to($('.progress-2 li:nth-child(1)'), 1, {opacity: 0.3}, '<')
+        timeline.to($('.no .no1 :last-child'), 1, {y: '10%', autoAlpha: 0 }, '>')
 
         timeline.from($('.no .no2 :last-child'), 3, {y: '-100%',autoAlpha: 0, repeat: 1, yoyo: true}, '>')
         timeline.to($('.illustration .square'), 2,  { strokeDashoffset: 0, delay: 1, repeat:1, yoyo: true}, '<')
@@ -194,7 +194,7 @@ $(document).ready( () => {
         timeline.to($('.body .body__text__no2'), 2, {y: '-10%', autoAlpha: 0}, '>' )
 
         timeline.from($('.no .no3 :last-child'), 1, {y: '20%', opacity: 0 })
-        timeline.to($('.illustration .circle'), 1, {strokeDashoffset: 0, yoyo: true, width: 0, height: 0}, '<')
+        timeline.to($('.illustration .circle'), 1, {strokeDashoffset: 0, yoyo: true, width: 0, height: 0}, '>')
         timeline.to($('.description.no3'), 1, {y: '-20%', autoAlpha: 1 }, '<')
         timeline.to($('.progress-2 li:nth-child(3)'), 1, {opacity: 1}, '<')
         timeline.fromTo($('.body .body__text__no3'), 1, {y: "10%", autoAlpha: 0 }, {y: 0, autoAlpha: 1 }, '<')
