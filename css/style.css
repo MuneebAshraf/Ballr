@@ -51,6 +51,7 @@ html {
   font-family: Brooklyn-Normal, sans-serif;
   color: #F6F4EF;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {

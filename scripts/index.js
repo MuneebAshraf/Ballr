@@ -24,7 +24,7 @@ $(document).ready( () => {
             delay += (video_progress - delay) * accelamount;
             console.log( video_progress, delay );
 
-            video_1.currentTime = delay;
+            //video_1.currentTime = delay;
         }, 41.666 );
         
         new ScrollMagic.Scene({
@@ -134,19 +134,26 @@ $(document).ready( () => {
 
 
             //make body change color when entering "Section-9"
-        let fadeoverrTimeline = new TimelineMax();
-        fadeoverrTimeline.to($('body'), {backgroundColor:"#1C1C1C"})
         new ScrollMagic.Scene({
             duration: "50%",
             triggerElement: $('.section-9'),
             triggerHook: "onEnter",
         })
-            .setTween(fadeoverrTimeline)
+            .setTween( TweenMax.to( $( 'body' ), {backgroundColor: "#1C1C1C"} ))
             .addTo(controller);
 
+        let fadeoverrTimeline = new TimelineMax();
+        fadeoverrTimeline.to( $( 'body' ), {backgroundColor: "#1C1C1C"} )
+        new ScrollMagic.Scene( {
+            duration: "50%",
+            triggerElement: $( '.section-9' ),
+            triggerHook: "onEnter",
+        } )
+            .setTween( fadeoverrTimeline )
+            .addTo( controller );
 
 
-    // // create a scene for sectione 8
+        // // create a scene for sectione 8
     //     let section8Timeline = new TimelineMax()
     //     let array = $('.section-8 span:not(.excluded)');
     //     for (let i = 0; i < array.length; i++) {
