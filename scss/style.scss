@@ -26,6 +26,7 @@ html {
   min-height: 100vh;
   font-family: Brooklyn-Normal, sans-serif;
   color: $off-white;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -234,13 +235,14 @@ nav.navbar {
   .product-vid {
     z-index: 1;
     position: fixed;
+    bottom: 15%;
     width: 100%;
-    display: none;
+    display: flex;
     place-content: center;
     place-items: center;
 
     .video {
-      width: 80%;
+      //width: 80%;
     }
   }
 

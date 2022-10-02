@@ -3,10 +3,30 @@ $(document).ready( () => {
     let controller = new ScrollMagic.Controller();
 
     if ($('#index').length > 0) {
+        let video_1 = document.querySelector( '#product-vid-1' )
+        let video_progress = 0;
         
-        let scrolltop = pageYOffset;
-        
+        document.addEventListener('scroll', (e) => {
+            let pos = document.documentElement.scrollTop;
+            let calcHeight = 
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+            
+            let scrollValue = ((pos * 100) / (calcHeight * 0.3))
+            let duration = video_1.duration;
+            video_progress = (scrollValue * ( duration / 100))
+        })
 
+        let accelamount = 0.1;
+        let delay = 0.7;
+
+        setInterval( () => {
+            delay += (video_progress - delay) * accelamount;
+            console.log( video_progress, delay );
+
+            video_1.currentTime = delay;
+        }, 41.666 );
+        
         new ScrollMagic.Scene({
             triggerHook: "onLeave",
             triggerElement: $('#index'),
@@ -16,14 +36,7 @@ $(document).ready( () => {
             //.setPin($('.product-vid'))
             .addIndicators() // add indicators (requires plugin)
             .on("progress", function (e) {
-                console.log(e.progress.toFixed(2))
-                if(window.scrollTop > 50){
-                    if (!$('header').hasClass('grow'))
-                        $('header').addClass('grow')
-                } else {
-                    if ($('header').hasClass('grow'))
-                        $('header').removeClass('grow')
-                }
+                
             })
         // slide slogns ind
         new ScrollMagic.Scene({
