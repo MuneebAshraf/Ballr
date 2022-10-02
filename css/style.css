@@ -51,6 +51,7 @@ html {
   min-height: 100vh;
   font-family: Brooklyn-Normal, sans-serif;
   color: #F6F4EF;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -228,13 +229,11 @@ nav.navbar .sub-pages a {
 #index .product-vid {
   z-index: 1;
   position: fixed;
+  bottom: 15%;
   width: 100%;
-  display: none;
+  display: flex;
   place-content: center;
   place-items: center;
-}
-#index .product-vid .video {
-  width: 80%;
 }
 #index .hero-section {
   position: relative;
