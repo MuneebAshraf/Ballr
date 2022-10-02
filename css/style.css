@@ -67,15 +67,12 @@ body.white {
 
 section {
   font-family: Brooklyn-Normal, sans-serif;
-  min-height: calc(100vh - 100px);
-  display: grid !important;
+  min-height: calc(100vh - 104px);
+  display: grid;
   gap: 0.5em;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
   color: #F5F5F5;
-}
-section:first-of-type {
-  min-height: calc(100vh - 150px);
 }
 
 #navbarBootstrap .test133 {
@@ -303,7 +300,7 @@ nav.navbar .sub-pages a {
   translate: 0;
 }
 #index section.section-3 {
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 104px);
   white-space: nowrap;
   overflow: hidden;
 }
@@ -445,123 +442,38 @@ nav.navbar .sub-pages a {
   transition: all 0.3s;
 }
 #index .section-9 {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 104px);
 }
 #index .section-10 {
-  background-color: #1C1C1C;
+  display: initial;
 }
-
-#scale1, #scale2, #scale3, #scale4 {
-  -webkit-transform: scale(0.9);
-  -moz-transform: scale(0.9);
-  transform: scale(0.9);
+#index .section-10 .container {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
 }
-
-#section-10 {
-  display: flex !important;
-  position: relative;
-}
-
-.position-box-1 {
-  position: absolute;
-  top: 5%;
-  right: 20%;
-  -webkit-transform: scale(0.9);
-  -moz-transform: scale(0.9);
-  transform: scale(0.9);
-}
-
-.position-box-2 {
-  position: absolute;
-  top: 40%;
-  right: 10%;
-}
-
-.position-box-3 {
-  position: absolute;
-  top: 40%;
-  right: 30%;
-}
-
-.male-images {
-  display: flex;
-}
-
-.health-image {
-  margin-right: 1vw;
-}
-
-.statisticBox {
-  place-content: center;
-  position: relative;
-  width: fit-content;
-}
-
-.statisticBox .statistic-image {
-  min-width: 100%;
-  -webkit-transform: scale(0.8);
-  -moz-transform: scale(0.8);
-  transform: scale(0.8);
-}
-
-.statisticBox p {
-  text-align: center;
-}
-
-.stastic-text {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.stastic-text span {
-  font-weight: 700;
-}
-
-#flexContainer {
-  display: block !important;
-  position: relative;
-  padding-top: 10vh;
-  padding-bottom: 10vh;
-  line-height: 2;
-}
-
-#flexContainer .flex-mental-health {
-  display: flex;
-  gap: 3vw;
-  align-items: center;
-}
-
-.flex-mental-health {
-  z-index: 1;
-}
-
-.male-images h5 {
-  z-index: 1;
-}
-
-.bagground-image-statistic {
-  width: 60vw;
-  height: 70vh;
+#index .section-10 .container .scale-container {
   display: grid;
-  place-content: center;
-  background-color: #181818;
-  box-shadow: 1px 6px 4px 3px rgba(0, 0, 0, 0.45);
-  -webkit-box-shadow: 1px 6px 4px 3px rgba(0, 0, 0, 0.45);
-  -moz-box-shadow: 1px 6px 4px 3px rgba(0, 0, 0, 0.45);
-  border-radius: 5rem;
-  position: absolute;
-  right: 10%;
-  z-index: -1;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  aspect-ratio: 1;
+  place-items: center;
+}
+#index .section-10 .container .scale-container img {
+  width: 100%;
+  grid-area: 1/1/-1/-1;
+}
+#index .section-10 .container .scale-container__scale-text {
+  margin: 0px;
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+  text-align: center;
 }
 
-#ourVision .body-container {
-  height: calc(200vh - 200px);
+#ourVision {
+  overflow-x: hidden;
 }
 #ourVision section {
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 104px);
   padding: 0 4em;
   color: #182B3B;
   grid-template-areas: "no no . illustration ." "no no . illustration ." "progress body body body ." "progress body body body ." ". . . . . ";
@@ -691,6 +603,7 @@ nav.navbar .sub-pages a {
   font-size: 17rem;
   line-height: 1;
   opacity: 0.15;
+  margin: 0;
 }
 #ourVision .illustration {
   grid-area: illustration;
@@ -863,12 +776,12 @@ canvas {
   display: flex;
   place-content: center;
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 104px);
 }
 #ballr-journal .journal-intro {
   text-align: center;
   position: relative;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 104px);
   width: 100%;
   background: rgb(24, 43, 59);
   background: linear-gradient(360deg, rgb(24, 43, 59) 0%, rgba(35, 53, 68, 0.9671218829) 9%, rgba(68, 83, 97, 0.92) 32%, rgba(109, 121, 132, 0.86) 56%, rgb(238, 239, 241) 100%);
@@ -882,14 +795,12 @@ canvas {
   font-size: 3.5rem;
   padding-top: 10vh;
   text-transform: uppercase;
-  transform: rotate(180deg);
   transform: rotateX(180deg);
   opacity: 0.2;
 }
 #ballr-journal .ballr-span {
   -webkit-text-fill-color: transparent;
-  /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 0.1px;
+  -webkit-text-stroke-width: 1.1px;
   -webkit-text-stroke-color: white;
 }
 #ballr-journal .paper-bg {
@@ -1013,7 +924,7 @@ canvas {
   flex-direction: column;
   gap: 2vh;
   line-height: 2;
-  width: 60vw;
+  width: 50vw;
   margin: 10vh auto;
 }
 #body-article .article-intro p {
@@ -1033,8 +944,7 @@ canvas {
 #body-article .article-wrapper {
   display: flex;
   gap: 3vw;
-  width: 60vw;
-  margin: auto;
+  width: 70vw;
 }
 #body-article .article-text h3 {
   font-size: 32px;
@@ -1042,7 +952,7 @@ canvas {
 }
 #body-article .article-text,
 #body-article .article-aside {
-  /* padding: 1em; */
+  padding: 1em;
 }
 #body-article .article-aside a {
   font-size: 1rem;

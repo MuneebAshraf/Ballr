@@ -79,9 +79,17 @@ $(document).ready( () => {
             .setTween(fadeoverTimeline)
             .addTo(controller);
 
-            
+        //make sliding-logo grow
+        let section3Timeline = new TimelineMax()
+        section3Timeline.to( $( '.sliding-logo' ), {scale: 11.8} )
+        new ScrollMagic.Scene( {
+            duration: "100%",
+            triggerElement: $( '.sliding-logo' ),
+            triggerHook: 0.4,
+        } )
+            .setTween( section3Timeline )
+            .addTo( controller );
 
-        
 
         // fade the circles in and then fade text with lines
         let timelineForSection4 = new TimelineMax();
@@ -127,26 +135,17 @@ $(document).ready( () => {
 
             //make body change color when entering "Section-9"
         let fadeoverrTimeline = new TimelineMax();
-        fadeoverrTimeline.to($('body'), {autoAlpha: 1, backgroundColor:"#1C1C1C"})
+        fadeoverrTimeline.to($('body'), {backgroundColor:"#1C1C1C"})
         new ScrollMagic.Scene({
-            duration: "100%",
+            duration: "50%",
             triggerElement: $('.section-9'),
             triggerHook: "onEnter",
         })
             .setTween(fadeoverrTimeline)
             .addTo(controller);
-            
 
-        //make sliding-logo grow
-        let section3Timeline = new TimelineMax()
-        section3Timeline.to($('.sliding-logo'), {scale:11.8})
-        new ScrollMagic.Scene({
-            duration: "100%",
-            triggerElement: $('.sliding-logo'),
-            triggerHook: 0.4,
-        })
-            .setTween(section3Timeline)
-            .addTo(controller);
+
+
     // // create a scene for sectione 8
     //     let section8Timeline = new TimelineMax()
     //     let array = $('.section-8 span:not(.excluded)');
@@ -175,9 +174,6 @@ $(document).ready( () => {
     }
 
     if ($('#ourVision').length > 0) {
-        let path = document.querySelector('.progress__progress')
-        let pathLength = document.querySelector('.progress__progress').getTotalLength();
-        path.setAttribute('style', 'stroke-dashoffset:'+pathLength * .99 +';stroke-dasharray:'+pathLength)
         let timeline = new TimelineMax()
 
         timeline.to($('.illustration .dots'), 1, {strokeWidth: 0 })
@@ -213,15 +209,37 @@ $(document).ready( () => {
                 indent: 100
             })
             .on("progress", function (e) {
-                let path = document.querySelector('.progress__progress')
-                let pathLength = document.querySelector('.progress__progress').getTotalLength();
 
-                let percentage = 1- (e.progress.toFixed(2));
 
-                if (0.01 <= percentage && percentage <= 0.99)
-                    path.setAttribute('style', 'stroke-dasharray:'+pathLength+';stroke-dashoffset:'+pathLength * percentage)
+
+
             })
             .addTo(controller)
+
+        let path = document.querySelector( '.progress__progress' )
+        let pathLength = document.querySelector( '.progress__progress' ).getTotalLength();
+        path.setAttribute( 'style', 'stroke-dasharray:' + pathLength + ';stroke-dashoffset:' + pathLength * 0.99 )
+        let ticking = false;
+        const updateProgressBar = (scrollValue) => {
+            if ( 0.99 >= scrollValue ) {
+                path.setAttribute( 'style', 'stroke-dasharray:' + pathLength + ';stroke-dashoffset:' + pathLength * scrollValue )
+            }
+        }
+        document.addEventListener( 'scroll', (e) => {
+            let pos = document.documentElement.scrollTop;
+            let calcHeight =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+            let scrollValue = 1 - ((pos) / calcHeight).toFixed(2)
+            if ( !ticking ) {
+                window.requestAnimationFrame( () => {
+                    updateProgressBar( scrollValue )
+                    ticking = false;
+                } );
+
+                ticking = true;
+            }
+        } )
     }
 
 
