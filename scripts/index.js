@@ -142,14 +142,16 @@ $(document).ready( () => {
             .setTween( TweenMax.to( $( 'body' ), {backgroundColor: "#1C1C1C"} ))
             .addTo(controller);
 
-        let fadeoverrTimeline = new TimelineMax();
-        fadeoverrTimeline.to( $( 'body' ), {backgroundColor: "#1C1C1C"} )
+        let slideStatisticsIn = new TimelineMax();
+        slideStatisticsIn.from( $( '.statistics-title' ), {opacity: 0, x: "-10%"} )
+        slideStatisticsIn.from( $( '.statistics-body' ), {opacity: 0, x: "-10%"}, '0.2')
+        slideStatisticsIn.from( $( '.statistics-imgs' ), {opacity: 0, x: "-10%"}, '0.4')
         new ScrollMagic.Scene( {
             duration: "50%",
-            triggerElement: $( '.section-9' ),
-            triggerHook: "onEnter",
+            triggerElement: $( '.section-10' ),
+            triggerHook: 0.55,
         } )
-            .setTween( fadeoverrTimeline )
+            .setTween( slideStatisticsIn )
             .addTo( controller );
 
 
