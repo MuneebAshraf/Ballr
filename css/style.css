@@ -234,7 +234,7 @@ nav.navbar .sub-pages a {
   position: fixed;
   bottom: 15%;
   width: 100%;
-  display: none;
+  display: flex;
   place-content: center;
   place-items: center;
 }
