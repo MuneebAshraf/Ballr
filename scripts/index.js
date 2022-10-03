@@ -220,7 +220,7 @@ $(document).ready( () => {
 
         new ScrollMagic.Scene({
             duration: "100%",
-            triggerElement: $('.section'),
+            triggerElement: $('.body-container'),
             triggerHook: "onLeave",
             offset: -$('.navbar').outerHeight()
 
@@ -230,12 +230,6 @@ $(document).ready( () => {
             .addIndicators({
                 name: "section1",
                 indent: 100
-            })
-            .on("progress", function (e) {
-
-
-
-
             })
             .addTo(controller)
 
@@ -259,18 +253,9 @@ $(document).ready( () => {
                     updateProgressBar( scrollValue )
                     ticking = false;
                 } );
-
                 ticking = true;
             }
-        } )
+        })
     }
-
-
-    const randomInt = (min, max, rounded = true) => {
-        if (rounded)
-            return Math.round(Math.random() * (max - min) + min);
-        else
-            return Math.random() * (max - min) + min;
-}
 })
 
