@@ -50,6 +50,11 @@ section {
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
   color: $white;
+
+  .container, .container-fluid {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+  }
 }
 
 header {
@@ -479,10 +484,7 @@ nav.navbar {
   }
 
   .section-10 {
-
     .container {
-      grid-column: 1 / -1;
-      grid-row: 1 / -1;
 
       .scale-container {
         display: grid;
