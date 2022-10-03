@@ -142,17 +142,23 @@ $(document).ready( () => {
             .setTween( TweenMax.to( $( 'body' ), {backgroundColor: "#1C1C1C"} ))
             .addTo(controller);
 
+
+        //fade in effect when entering "Section-10"
         let slideStatisticsIn = new TimelineMax();
         slideStatisticsIn.from( $( '.statistics-title' ), {opacity: 0, x: "-10%"} )
-        slideStatisticsIn.from( $( '.statistics-body' ), {opacity: 0, x: "-10%"}, '0.2')
-        slideStatisticsIn.from( $( '.statistics-imgs' ), {opacity: 0, x: "-10%"}, '0.4')
-        slideStatisticsIn.from( $( '.statistics-bottom-text' ), {opacity: 0, x: "-10%"}, '0.6')
+        slideStatisticsIn.from( $( '.statistics-body' ), {opacity: 0, x: "-10%"}, '0.1')
+        slideStatisticsIn.from( $( '.statistics-imgs' ), {opacity: 0, x: "-10%"}, '0.2')
+        slideStatisticsIn.from( $( '.statistics-bottom-text' ), {opacity: 0, x: "-10%"}, '0.3')
+        slideStatisticsIn.from( $( '.scale-wrapper-1' ), {opacity: 0, scale: ".75"}, '0.4')
+        slideStatisticsIn.from( $( '.scale-wrapper-2' ), {opacity: 0, scale: ".75"}, '0.5')
+        slideStatisticsIn.from( $( '.scale-wrapper-3' ), {opacity: 0, scale: ".75"}, '0.6')
         new ScrollMagic.Scene( {
-            duration: "50%",
+            duration: "100%",
             triggerElement: $( '.section-10' ),
-            triggerHook: 0.55,
+            triggerHook: .25,
         } )
             .setTween( slideStatisticsIn )
+            .setPin($('.section-10 .row'))
             .addTo( controller );
         
         
