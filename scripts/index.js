@@ -154,6 +154,19 @@ $(document).ready( () => {
         } )
             .setTween( slideStatisticsIn )
             .addTo( controller );
+        
+        
+
+            
+        //     let hurtighurtig = new TimelineMax();
+        //     hurtighurtig.to($('.geInTouch'), 1, { strokeWidth: 0 })
+        // new ScrollMagic.Scene( {
+        //     duration: "50%",
+        //     triggerElement: $( '.section-kontakt' ),
+        //     triggerHook: 0.55,
+        // } )
+        //     .setTween( hurtighurtig )
+        //     .addTo( controller );
 
 
         // // create a scene for sectione 8
