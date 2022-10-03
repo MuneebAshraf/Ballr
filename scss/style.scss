@@ -37,6 +37,7 @@ a {
   color: #F6F4EF;
 }
 
+
 .btn {
   padding: 0.5em 2em;
   border-radius: 5px;
@@ -76,11 +77,6 @@ section {
   color: #F5F5F5;
 }
 
-#navbarBootstrap .test133 {
-  width: 100%;
-  height: 100px;
-  color: white;
-}
 #navbarBootstrap i {
   margin-left: 10vw;
 }
@@ -269,6 +265,7 @@ nav.navbar .sub-pages a {
   grid-area: 2/1/span 1/span 5;
   text-align: center;
   text-transform: uppercase;
+  // font-size: 8vw;
 }
 #index .hero-section h1 span {
   color: #C8B090;
@@ -276,7 +273,7 @@ nav.navbar .sub-pages a {
 #index .section-2 {
   align-items: center;
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 #index .section-2 * {
   -webkit-transition: all 0.5s;
@@ -581,8 +578,8 @@ nav.navbar .sub-pages a {
   padding-top: 3em;
 }
 #ourVision .body__text {
-  font-size: 1.5rem;
-  line-height: 1.5;
+  font-size: 1.1rem;
+  line-height: 2;
   display: inline-grid;
   grid-template-rows: repeat(5, 1fr);
 }
@@ -600,7 +597,7 @@ nav.navbar .sub-pages a {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
   font-size: 17rem;
   line-height: 1;
   opacity: 0.15;
@@ -657,6 +654,17 @@ canvas {
   padding-top: 10vh;
   margin: auto;
   align-items: center;
+
+
+@keyframes fadeIn {
+  0% {
+   opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+  animation: 1s ease-out 0s 1 fadeIn;
 }
 
 .kontaktP {
@@ -704,9 +712,12 @@ canvas {
 }
 
 .linkedin::before {
-  content: "\f472";
+  content: "";
   display: inline-flex;
-  font-size: 20px;
+  background: url(/lib/Linkedin.png);
+  background-size: cover;
+  width: 30px;
+  height: 30px;
   margin-right: 1vw;
 }
 
@@ -910,6 +921,8 @@ canvas {
   justify-content: center;
 }
 
+//Specific Article //
+
 #body-article {
   color: #1C1C1C;
 }
@@ -1018,5 +1031,16 @@ footer {
 .footer-about {
   width: 30vw;
 }
+
+:target:before {
+  content: "";
+  display: block;
+  height: 150px;
+  margin: -150px 0 0;
+}
+
+
+
+
 
 /*# sourceMappingURL=style.css.map */
