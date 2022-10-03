@@ -147,7 +147,6 @@ $(document).ready( () => {
         slideStatisticsIn.from( $( '.statistics-body' ), {opacity: 0, x: "-10%"}, '0.2')
         slideStatisticsIn.from( $( '.statistics-imgs' ), {opacity: 0, x: "-10%"}, '0.4')
         slideStatisticsIn.from( $( '.statistics-bottom-text' ), {opacity: 0, x: "-10%"}, '0.6')
-        // slideStatisticsIn.from( $( '.statistic-image' ), {opacity: 0, }, '0.8')
         new ScrollMagic.Scene( {
             duration: "50%",
             triggerElement: $( '.section-10' ),
