@@ -41,11 +41,8 @@
             <button class="navbar-toggler order-first" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a href="#" class="shopping-cart order-lg-3 mx-lg-5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bag"
-                     viewBox="0 0 16 16">
-                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-                </svg>
+            <a href="https://p42vrz8a3bv1z36k-66240741627.shopifypreview.com/products_preview?preview_key=e1f073150e7b7eabfe235c8a67aa785b" class="shopping-cart order-lg-3 mx-lg-5">
+            Køb
             </a>
             <div class="collapse navbar-collapse order-xs-last order-sm-2" id="navmenu">
                 <ul class="navbar-nav ms-auto my-4">
@@ -64,15 +61,15 @@
     </nav>
 
 
-    <div class="px-sm-5" id="index">
+    <div class="px-sm-5 px-md-0" id="index">
         <div class="product-vid">
-                <video id="product-vid-1" class="video" muted tabindex="0" autobuffer preload="true">
+                <video id="product-vid-1" class="video animate__animated animate__slideInUp" muted tabindex="0" autobuffer preload="true">
                     <source src="/lib/product_vid_0.webm">
                     Sorry, your browser doesn't support embedded videos.
                 </video>
             </div>
         <section class="hero-section">
-        <h1>WANT TO BECOME A BALLR?<span> THE NEW MOVEMENT FOR MEN</span></h1>
+        <h1>WANT TO BECOME A <span>BALLR</span>? THE NEW MOVEMENT FOR <span>MEN</span></h1>
         </section>
         <section class="section-2">
             <p id="slogan-1">Stilrent <span>design.</span></p>
@@ -263,6 +260,182 @@
             </div>
         </div>
     </footer>
+    <script type="text/javascript">
+        /*<![CDATA[*/
+        (function () {
+            var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+            if ( window.ShopifyBuy ) {
+                if ( window.ShopifyBuy.UI ) {
+                    ShopifyBuyInit();
+                } else {
+                    loadScript();
+                }
+            } else {
+                loadScript();
+            }
 
+            function loadScript() {
+                var script = document.createElement( 'script' );
+                script.async = true;
+                script.src = scriptURL;
+                (document.getElementsByTagName( 'head' )[ 0 ] || document.getElementsByTagName( 'body' )[ 0 ]).appendChild( script );
+                script.onload = ShopifyBuyInit;
+            }
+
+            function ShopifyBuyInit() {
+                var client = ShopifyBuy.buildClient( {
+                    domain: 'ballr-5214.myshopify.com',
+                    storefrontAccessToken: '6e232b7785ba86f9679c6fb1ab9bfd25',
+                } );
+                ShopifyBuy.UI.onReady( client ).then( function (ui) {
+                    ui.createComponent( 'product', {
+                        id: '7848839348475',
+                        node: document.getElementById( 'product-component-1664917159813' ),
+                        moneyFormat: '%7B%7Bamount_with_comma_separator%7D%7D%20kr',
+                        options: {
+                            "product": {
+                                "styles": {
+                                    "product": {
+                                        "@media (min-width: 601px)": {
+                                            "max-width": "calc(25% - 20px)",
+                                            "margin-left": "20px",
+                                            "margin-bottom": "50px"
+                                        }
+                                    },
+                                    "button": {
+                                        "font-family": "Brooklyn-Normal, sans-serif",
+                                        "font-size": "16px",
+                                        "padding-top": "16px",
+                                        "padding-bottom": "16px",
+                                        ":hover": {
+                                            "background-color": "#566032"
+                                        },
+                                        "background-color": "#606b38",
+                                        ":focus": {
+                                            "background-color": "#566032"
+                                        },
+                                        "border-radius": "5px",
+                                        "padding-left": "33px",
+                                        "padding-right": "33px"
+                                    },
+                                    "quantityInput": {
+                                        "font-size": "16px",
+                                        "padding-top": "16px",
+                                        "padding-bottom": "16px"
+                                    }
+                                },
+                                "buttonDestination": "modal",
+                                "contents": {
+                                    "img": false,
+                                    "title": false,
+                                    "price": false,
+                                    "options": false
+                                },
+                                "text": {
+                                    "button": "View product"
+                                }
+                            },
+                            "productSet": {
+                                "styles": {
+                                    "products": {
+                                        "@media (min-width: 601px)": {
+                                            "margin-left": "-20px"
+                                        }
+                                    }
+                                }
+                            },
+                            "modalProduct": {
+                                "contents": {
+                                    "img": false,
+                                    "imgWithCarousel": true,
+                                    "button": false,
+                                    "buttonWithQuantity": true
+                                },
+                                "styles": {
+                                    "product": {
+                                        "@media (min-width: 601px)": {
+                                            "max-width": "100%",
+                                            "margin-left": "0px",
+                                            "margin-bottom": "0px"
+                                        }
+                                    },
+                                    "button": {
+                                        "font-family": "Brooklyn-Normal, sans-serif",
+                                        "font-size": "16px",
+                                        "padding-top": "16px",
+                                        "padding-bottom": "16px",
+                                        ":hover": {
+                                            "background-color": "#566032"
+                                        },
+                                        "background-color": "#606b38",
+                                        ":focus": {
+                                            "background-color": "#566032"
+                                        },
+                                        "border-radius": "5px",
+                                        "padding-left": "33px",
+                                        "padding-right": "33px"
+                                    },
+                                    "quantityInput": {
+                                        "font-size": "16px",
+                                        "padding-top": "16px",
+                                        "padding-bottom": "16px"
+                                    },
+                                    "title": {
+                                        "color": "#182b3b"
+                                    }
+                                },
+                                "text": {
+                                    "button": "Tilføj til kurv"
+                                }
+                            },
+                            "option": {},
+                            "cart": {
+                                "styles": {
+                                    "button": {
+                                        "font-family": "Brooklyn-Normal, sans-serif",
+                                        "font-size": "16px",
+                                        "padding-top": "16px",
+                                        "padding-bottom": "16px",
+                                        ":hover": {
+                                            "background-color": "#566032"
+                                        },
+                                        "background-color": "#606b38",
+                                        ":focus": {
+                                            "background-color": "#566032"
+                                        },
+                                        "border-radius": "5px"
+                                    }
+                                },
+                                "text": {
+                                    "title": "Kurv",
+                                    "total": "Subtotal",
+                                    "button": "Checkout"
+                                },
+                                "popup": false
+                            },
+                            "toggle": {
+                                "styles": {
+                                    "toggle": {
+                                        "font-family": "Brooklyn-Normal, sans-serif",
+                                        "background-color": "#606b38",
+                                        ":hover": {
+                                            "background-color": "#566032"
+                                        },
+                                        ":focus": {
+                                            "background-color": "#566032"
+                                        }
+                                    },
+                                    "count": {
+                                        "font-size": "16px"
+                                    }
+                                }
+                            }
+                        },
+                    } );
+                } );
+            }
+        })();
+        /*]]>*/
+    </script>
 </body>
 </html>

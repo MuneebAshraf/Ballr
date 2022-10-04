@@ -5,6 +5,15 @@ $(document).ready( () => {
     if ($('#index').length > 0) {
         let video_1 = document.querySelector( '#product-vid-1' )
         let video_progress = 0;
+        let accelamount = 0.6;
+        let delay = 0.1;
+
+        setInterval( () => {
+            delay += (video_progress - delay) * accelamount;
+            console.log( video_progress, delay );
+
+            video_1.currentTime = delay;
+        }, 41.666 );
         
         document.addEventListener('scroll', (e) => {
             let pos = document.documentElement.scrollTop;
@@ -12,32 +21,27 @@ $(document).ready( () => {
                 document.documentElement.scrollHeight -
                 document.documentElement.clientHeight;
             
-            let scrollValue = ((pos * 100) / (calcHeight * 0.3))
+            let scrollValue = ((pos * 100) / (calcHeight * 0.45))
             let duration = video_1.duration;
             video_progress = (scrollValue * ( duration / 100))
+            
+            if (( scrollValue * (duration / 100) ) > 8.3 ) {
+                $(video_1).addClass('zoomInExit')
+            } else {
+                $( video_1 ).removeClass('zoomInExit')
+            }
         })
 
-        let accelamount = 0.1;
-        let delay = 0.7;
-
-        setInterval( () => {
-            delay += (video_progress - delay) * accelamount;
-            console.log( video_progress, delay );
-
-            //video_1.currentTime = delay;
-        }, 41.666 );
-        
         new ScrollMagic.Scene({
-            triggerHook: "onLeave",
-            triggerElement: $('#index'),
+            duration: "100%",
+            triggerHook: "onCenter",
+            triggerElement: $('.hero-section'),
+            reverse: false,
             offset: $('.nav').height()
         })
-            .addTo(controller)
-            //.setPin($('.product-vid'))
+            .setClassToggle( $( video_1 ), 'animate__animated animate__slideInUp' )
             .addIndicators() // add indicators (requires plugin)
-            .on("progress", function (e) {
-                
-            })
+            .addTo(controller)
         // slide slogns ind
         new ScrollMagic.Scene({
             duration: "100%",
@@ -264,4 +268,8 @@ $(document).ready( () => {
         })
     }
 })
+
+fetch('testapi.com/data', () => {
+
+} )
 

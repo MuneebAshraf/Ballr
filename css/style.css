@@ -75,6 +75,10 @@ section {
   grid-template-rows: repeat(5, 1fr);
   color: #ffffff;
 }
+section .container, section .container-fluid {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+}
 
 header {
   position: sticky;
@@ -204,11 +208,35 @@ nav.navbar .sub-pages a {
 #index .product-vid {
   z-index: 1;
   position: fixed;
-  bottom: 15%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   width: 100%;
-  display: none;
+  display: flex;
   place-content: center;
   place-items: center;
+  max-height: 75vh;
+}
+#index .product-vid .video {
+  max-height: 65vh;
+  width: 80%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+#index .product-vid .video.zoomInExit {
+  opacity: 0;
+  -webkit-transform: scale(3);
+  -moz-transform: scale(3);
+  -ms-transform: scale(3);
+  -o-transform: scale(3);
+  transform: scale(3);
 }
 #index .hero-section {
   position: relative;
@@ -423,10 +451,6 @@ nav.navbar .sub-pages a {
 }
 #index .section-9 {
   height: calc(100vh - 104px);
-}
-#index .section-10 .container {
-  grid-column: 1/-1;
-  grid-row: 1/-1;
 }
 #index .section-10 .container .scale-container {
   display: grid;
