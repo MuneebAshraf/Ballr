@@ -473,6 +473,9 @@ nav.navbar .sub-pages a {
 #index .section-9 {
   height: calc(100vh - 104px);
 }
+#index .section-10 .container #statistics-imgs-1, #index .section-10 .container #statistics-imgs-2 {
+  opacity: 0.3;
+}
 #index .section-10 .container .scale-container {
   display: grid;
   grid-template-columns: 1fr 1fr;

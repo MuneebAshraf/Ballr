@@ -537,6 +537,10 @@ nav.navbar {
   .section-10 {
     .container {
 
+      #statistics-imgs-1, #statistics-imgs-2 {
+        opacity: 0.3;
+
+      }
       .scale-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
