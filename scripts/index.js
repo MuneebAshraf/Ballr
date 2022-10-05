@@ -42,7 +42,7 @@ $(document).ready( () => {
             offset: $('.nav').height()
         })
             .setClassToggle( $( video_1 ), 'animate__animated animate__slideInUp' )
-            .addIndicators() // add indicators (requires plugin)
+    
             .addTo(controller)
         // slide slogns ind
         new ScrollMagic.Scene({
@@ -245,10 +245,7 @@ $(document).ready( () => {
         })
             .setPin($('.section'))
             .setTween(timeline)
-            .addIndicators({
-                name: "section1",
-                indent: 100
-            })
+            
             .addTo(controller)
 
         let path = document.querySelector( '.progress__progress' )
