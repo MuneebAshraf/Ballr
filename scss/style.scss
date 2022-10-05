@@ -280,6 +280,10 @@ nav.navbar {
       grid-area: 2 / 1 / span 1 / span 5;
       text-align: center;
       text-transform: uppercase;
+      font-size: 3rem;
+      line-height: 1.5;
+      font-weight: bold;
+      
 
       span {
         color: $gold;
@@ -423,6 +427,7 @@ nav.navbar {
 
   .section-5 {
     color: $background;
+    line-height: 2;
 
     .info-container {
       grid-area: 2 / 4 / span 3 / span 2;
@@ -460,15 +465,39 @@ nav.navbar {
     color: $background;
     line-height: 2;
 
-    .water__title {
-      color: transparent;
-      grid-area: 3 / 1 / span 2 / -1;
-      //background-image: url('/lib/splashing.png');
-      background-position-y: 450px;
-      -webkit-background-clip: text;
-      background-clip: text;
-      margin-left: 1.5em;
+    .info-container_1 {
+      grid-area: 1 / 2 ;
+      display: flex;
+      flex-direction: column;
+
+
+      .info-container__blade-icon_1 {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        margin-bottom: 1em;
+        margin-top: 0;
+        font-size: 1.25rem;
+
+        img {
+          background-color: $blue;
+          border-radius: 50%;
+          padding: .25em;
+        }
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1em;
+      }
+
+      
     }
+    
+  }
+
+  .shopify-buy-frame {
+    display: none;
   }
 
   .section-8 {
@@ -1018,8 +1047,8 @@ canvas {
 .filter {
   height: fit-content;
   background-color: rgb(154, 154, 154);
-  width: 10vw;
-  padding: 10px;
+  width: 10em;
+  padding: 0.7em;
   border-radius: 2px;
   display: flex;
   justify-content: space-between;
@@ -1040,10 +1069,10 @@ canvas {
 }
 
 .searchKnap {
-  padding: 10px;
+  padding: 0.7em;
   border-radius: 3px;
   border: 0.5px solid grey;
-  width: 7vw;
+  width: 8em;
   background-color: $green;
   color: white;
   box-shadow: -1px 10px 6px -7px rgba(0,0,0,0.46);
@@ -1241,3 +1270,9 @@ footer {
 width: 30vw;
 }
 
+
+//Api test//
+
+.shopify-buy-frame {
+  display: none;
+}

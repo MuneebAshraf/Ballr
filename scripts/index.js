@@ -1,6 +1,6 @@
 $(document).ready( () => {
 
-    let controller = new ScrollMagic.Controller();
+    let controller = new ScrollMagic.Controller(); 
 
     if ($('#index').length > 0) {
         let video_1 = document.querySelector( '#product-vid-1' )
@@ -32,7 +32,9 @@ $(document).ready( () => {
             }
         })
 
-        new ScrollMagic.Scene({
+        //Der blevet brugt scroll magic hver gang "new ScrollMagic.Scene" er i spil.//
+
+        new ScrollMagic.Scene({  
             duration: "100%",
             triggerHook: "onCenter",
             triggerElement: $('.hero-section'),
@@ -114,9 +116,9 @@ $(document).ready( () => {
 
         // create a scene for sectione 5
         let timelineForSection5 = new TimelineMax();
-        timelineForSection5.from($('.info-container__blade-icon'), {opacity:0, x: -100})
-        timelineForSection5.from($('.info-container__title'), {opacity:0, x: -100}, ".2")
-        timelineForSection5.from($('.info-container__text'), {opacity:0, x: -100}, ".4")
+        timelineForSection5.from($('.info-container__blade-icon'), {opacity:0, x: 100})
+        timelineForSection5.from($('.info-container__title'), {opacity:0, x: 100}, ".2")
+        timelineForSection5.from($('.info-container__text'), {opacity:0, x: 100}, ".4")
 
         new ScrollMagic.Scene({
             duration: "50%",
@@ -127,14 +129,20 @@ $(document).ready( () => {
             .addTo(controller); // assign the scene to the controller
 
     // create a scene for sectione 7
-        new ScrollMagic.Scene({
-            duration: "100%",
-            triggerElement: $('.section-7'),
-            triggerHook: "onCenter",
-            offset: -100
-        })
-            .setTween(TweenMax.from($('.water__title'), 1, {backgroundPositionY: 300} ))
-            .addTo(controller)
+    let timelineForSection7 = new TimelineMax();
+    timelineForSection7.from($('.info-container__blade-icon_1'), {opacity:0, x: -100})
+    timelineForSection7.from($('.info-container__title_1'), {opacity:0, x: -100}, ".2")
+    timelineForSection7.from($('.info-container__text_1'), {opacity:0, x: -100}, ".4")
+
+    new ScrollMagic.Scene({
+        duration: "50%",
+        triggerElement: $('.info-container_1'),
+        triggerHook: "onEnter",
+    })
+
+    
+        .setTween(timelineForSection7)
+        .addTo(controller); // assign the scene to the controller
 
 
             //make body change color when entering "Section-9"
@@ -269,7 +277,7 @@ $(document).ready( () => {
     }
 })
 
-fetch('testapi.com/data', () => {
+// fetch('testapi.com/data', () => {
 
-} )
+// } )
 
