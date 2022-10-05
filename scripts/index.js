@@ -1,6 +1,6 @@
 $(document).ready( () => {
 
-    let controller = new ScrollMagic.Controller(); 
+    let controller = new ScrollMagic.Controller();
 
     if ($('#index').length > 0) {
         let video_1 = document.querySelector( '#product-vid-1' )
@@ -34,7 +34,7 @@ $(document).ready( () => {
 
         //Der blevet brugt scroll magic hver gang "new ScrollMagic.Scene" er i spil.//
 
-        new ScrollMagic.Scene({  
+        new ScrollMagic.Scene({
             duration: "100%",
             triggerHook: "onCenter",
             triggerElement: $('.hero-section'),
@@ -42,7 +42,7 @@ $(document).ready( () => {
             offset: $('.nav').height()
         })
             .setClassToggle( $( video_1 ), 'animate__animated animate__slideInUp' )
-    
+
             .addTo(controller)
         // slide slogns ind
         new ScrollMagic.Scene({
@@ -140,7 +140,7 @@ $(document).ready( () => {
         triggerHook: "onEnter",
     })
 
-    
+
         .setTween(timelineForSection7)
         .addTo(controller); // assign the scene to the controller
 
@@ -245,7 +245,7 @@ $(document).ready( () => {
         })
             .setPin($('.section'))
             .setTween(timeline)
-            
+
             .addTo(controller)
 
         let path = document.querySelector( '.progress__progress' )
@@ -274,7 +274,4 @@ $(document).ready( () => {
     }
 })
 
-// fetch('testapi.com/data', () => {
-
-// } )
 
