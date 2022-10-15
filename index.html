@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Ballr</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -64,14 +64,8 @@
     </nav>
 
 
-    <div class="px-sm-5 px-md-0" id="index">
-        <div class="product-vid">
-            <video id="product-vid-1" class="video animate__animated animate__slideInUp" muted tabindex="0" autobuffer
-                preload="true">
-                <source src="/lib/product_vid_0.webm">
-                Sorry, your browser doesn't support embedded videos.
-            </video>
-        </div>
+    <div class="" id="index">
+
         <section class="hero-section">
             <h1>Velkommen til den eksklusive klub<span></span><br> Velkommen til <span>Ballr</span></h1>
         </section>
@@ -99,28 +93,54 @@
         <section class="fadeover">
 
         </section>
-        <section class="section-4">
-            <svg id="lines">
-                <line id="line1" stroke-width="1" x1="0" x2="100%" y1="0" y2="0"></line>
-                <line id="line2" stroke-width="1" x1="0" x2="75%" y1="50%" y2="50%"></line>
-                <line id="line3" stroke-width="1" x1="0" x2="50%" y1="100%" y2="100%"></line>
-            </svg>
-            <h2 class="product-name">Turima Turbo</h2>
-            <div class="product-container ring">
-                <div class="inner ring">
-                    <div class="circle">
-                        <svg id="inner-circle" height="100%" width="100%">
-                            <linearGradient id="goldToWhite" x1="0" x2="0" y1="0" y2="1">
-                                <stop class="stop1" offset="0%" />
-                                <stop class="stop2" offset="100%" />
-                            </linearGradient>
-                            <circle cx="50%" cy="50%" r="40%">
-                            </circle>
-                        </svg>
-                    </div>
-                </div>
-            </div>
+<!--        <section class="section-4">-->
+<!--            <svg id="lines">-->
+<!--                <line id="line1" stroke-width="1" x1="0" x2="100%" y1="0" y2="0"></line>-->
+<!--                <line id="line2" stroke-width="1" x1="0" x2="75%" y1="50%" y2="50%"></line>-->
+<!--                <line id="line3" stroke-width="1" x1="0" x2="50%" y1="100%" y2="100%"></line>-->
+<!--            </svg>-->
+<!--            <h2 class="product-name">Turima Turbo</h2>-->
+<!--            <div class="product-container ring">-->
+<!--                <div class="inner ring">-->
+<!--                    <div class="circle">-->
+<!--                        <svg id="inner-circle" height="100%" width="100%">-->
+<!--                            <linearGradient id="goldToWhite" x1="0" x2="0" y1="0" y2="1">-->
+<!--                                <stop class="stop1" offset="0%" />-->
+<!--                                <stop class="stop2" offset="100%" />-->
+<!--                            </linearGradient>-->
+<!--                            <circle cx="50%" cy="50%" r="40%">-->
+<!--                            </circle>-->
+<!--                        </svg>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
+<!--        </section>-->
+        <section class="section-4">
+            <div class="container-fluid">
+               <div class="row">
+                   <div class="product-name col-12">
+                       <div class="lines line-1"></div>
+                       <div class="lines line-2"></div>
+                       <div class="lines line-3"></div>
+                       <h2 class="text-uppercase text-end text-lg-center m-0 display-1">Turima Turbo</h2>
+                   </div>
+<!--                   <div class="product-container ring">-->
+<!--                       <div class="inner ring">-->
+<!--                           <div class="circle">-->
+<!--                               <svg id="inner-circle" height="100%" width="100%">-->
+<!--                                   <linearGradient id="goldToWhite" x1="0" x2="0" y1="0" y2="1">-->
+<!--                                       <stop class="stop1" offset="0%"/>-->
+<!--                                       <stop class="stop2" offset="100%"/>-->
+<!--                                   </linearGradient>-->
+<!--                                   <circle cx="50%" cy="50%" r="40%">-->
+<!--                                   </circle>-->
+<!--                               </svg>-->
+<!--                           </div>-->
+<!--                       </div>-->
+<!--                   </div>-->
+               </div>
+            </div>
         </section>
         <section class="section-5">
             <div class="info-container">
@@ -284,184 +304,6 @@
             </div>
         </div>
     </footer>
-    <script type="text/javascript">
-        /*<![CDATA[*/
-        (function () {
-            var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-            if (window.ShopifyBuy) {
-                if (window.ShopifyBuy.UI) {
-                    ShopifyBuyInit();
-                } else {
-                    loadScript();
-                }
-            } else {
-                loadScript();
-            }
-
-            function loadScript() {
-                var script = document.createElement('script');
-                script.async = true;
-                script.src = scriptURL;
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
-                script.onload = ShopifyBuyInit;
-            }
-
-            function ShopifyBuyInit() {
-                var client = ShopifyBuy.buildClient({
-                    domain: 'ballr-5214.myshopify.com',
-                    storefrontAccessToken: '6e232b7785ba86f9679c6fb1ab9bfd25',
-                });
-                ShopifyBuy.UI.onReady(client).then(function (ui) {
-                    ui.createComponent('product', {
-                        id: '7848839348475',
-                        node: document.getElementById('product-component-1664917159813'),
-                        moneyFormat: '%7B%7Bamount_with_comma_separator%7D%7D%20kr',
-                        options: {
-                            "product": {
-                                "styles": {
-                                    "product": {
-                                        "@media (min-width: 601px)": {
-                                            "max-width": "calc(25% - 20px)",
-                                            "margin-left": "20px",
-                                            "margin-bottom": "50px"
-                                        }
-                                    },
-                                    "button": {
-                                        "display": "none" ,
-                                        "font-family": "Brooklyn-Normal, sans-serif",
-                                        "font-size": "16px",
-                                        "padding-top": "16px",
-                                        "padding-bottom": "16px",
-                                        ":hover": {
-                                            "background-color": "#566032"
-                                        },
-                                        "background-color": "#606b38",
-                                        ":focus": {
-                                            "background-color": "#566032"
-                                        },
-                                        "border-radius": "5px",
-                                        "padding-left": "33px",
-                                        "padding-right": "33px"
-                                    },
-                                    "quantityInput": {
-                                        "font-size": "16px",
-                                        "padding-top": "16px",
-                                        "padding-bottom": "16px"
-                                    }
-                                },
-                                "buttonDestination": "modal",
-                                "contents": {
-                                    "img": false,
-                                    "title": false,
-                                    "price": false,
-                                    "options": false
-                                },
-                                "text": {
-                                    "button": "View product"
-                                }
-                            },
-                            "productSet": {
-                                "styles": {
-                                    "products": {
-                                        "@media (min-width: 601px)": {
-                                            "margin-left": "-20px"
-                                        }
-                                    }
-                                }
-                            },
-                            "modalProduct": {
-                                "contents": {
-                                    "img": false,
-                                    "imgWithCarousel": true,
-                                    "button": false,
-                                    "buttonWithQuantity": true
-                                },
-                                "styles": {
-                                    "product": {
-                                        "@media (min-width: 601px)": {
-                                            "max-width": "100%",
-                                            "margin-left": "0px",
-                                            "margin-bottom": "0px"
-                                        }
-                                    },
-                                    "button": {
-                                        "font-family": "Brooklyn-Normal, sans-serif",
-                                        "font-size": "16px",
-                                        "padding-top": "16px",
-                                        "padding-bottom": "16px",
-                                        ":hover": {
-                                            "background-color": "#566032"
-                                        },
-                                        "background-color": "#606b38",
-                                        ":focus": {
-                                            "background-color": "#566032"
-                                        },
-                                        "border-radius": "5px",
-                                        "padding-left": "33px",
-                                        "padding-right": "33px"
-                                    },
-                                    "quantityInput": {
-                                        "font-size": "16px",
-                                        "padding-top": "16px",
-                                        "padding-bottom": "16px"
-                                    },
-                                    "title": {
-                                        "color": "#182b3b"
-                                    }
-                                },
-                                "text": {
-                                    "button": "Tilføj til kurv"
-                                }
-                            },
-                            "option": {},
-                            "cart": {
-                                "styles": {
-                                    "button": {
-                                        "font-family": "Brooklyn-Normal, sans-serif",
-                                        "font-size": "16px",
-                                        "padding-top": "16px",
-                                        "padding-bottom": "16px",
-                                        ":hover": {
-                                            "background-color": "#566032"
-                                        },
-                                        "background-color": "#606b38",
-                                        ":focus": {
-                                            "background-color": "#566032"
-                                        },
-                                        "border-radius": "5px"
-                                    }
-                                },
-                                "text": {
-                                    "title": "Kurv",
-                                    "total": "Subtotal",
-                                    "button": "Checkout"
-                                },
-                                "popup": false
-                            },
-                            "toggle": {
-                                "styles": {
-                                    "toggle": {
-                                        "font-family": "Brooklyn-Normal, sans-serif",
-                                        "background-color": "#606b38",
-                                        ":hover": {
-                                            "background-color": "#566032"
-                                        },
-                                        ":focus": {
-                                            "background-color": "#566032"
-                                        }
-                                    },
-                                    "count": {
-                                        "font-size": "16px"
-                                    }
-                                }
-                            }
-                        },
-                    });
-                });
-            }
-        })();
-        /*]]>*/
-    </script>
 </body>
 
 </html>

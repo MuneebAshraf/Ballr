@@ -8,13 +8,13 @@ $(document).ready( () => {
         let accelamount = 0.6;
         let delay = 0.1;
 
-        setInterval( () => {
-            delay += (video_progress - delay) * accelamount;
-            console.log( video_progress, delay );
-
-            video_1.currentTime = delay;
-        }, 41.666 );
-        
+        // setInterval( () => {
+        //     delay += (video_progress - delay) * accelamount;
+        //     console.log( video_progress, delay );
+        //
+        //     video_1.currentTime = delay;
+        // }, 41.666 );
+        //
         document.addEventListener('scroll', (e) => {
             let pos = document.documentElement.scrollTop;
             let calcHeight = 
@@ -98,20 +98,20 @@ $(document).ready( () => {
 
 
         // fade the circles in and then fade text with lines
-        let timelineForSection4 = new TimelineMax();
-        timelineForSection4.fromTo($('.product-container.ring'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1}, ".2")
-        timelineForSection4.fromTo($('.inner.ring'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1}, ".4")
-        timelineForSection4.fromTo($('.circle'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1},".6")
-        timelineForSection4.fromTo($('.product-name'), {opacity: 0, x: -300}, {opacity: 1, x: 0})
-        timelineForSection4.fromTo($('#lines'), {opacity: 0, width: 0}, {opacity: 1, width: "33%"}, "<")
-
-        new ScrollMagic.Scene({
-            duration: "40%",
-            triggerElement: $('.section-4'),
-            triggerHook: .5
-        })
-            .setTween(timelineForSection4)
-            .addTo(controller);
+        // let timelineForSection4 = new TimelineMax();
+        // timelineForSection4.fromTo($('.product-container.ring'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1}, ".2")
+        // timelineForSection4.fromTo($('.inner.ring'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1}, ".4")
+        // timelineForSection4.fromTo($('.circle'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1},".6")
+        // timelineForSection4.fromTo($('.product-name'), {opacity: 0, x: -300}, {opacity: 1, x: 0})
+        // timelineForSection4.fromTo($('#lines'), {opacity: 0, width: 0}, {opacity: 1, width: "33%"}, "<")
+        //
+        // new ScrollMagic.Scene({
+        //     duration: "40%",
+        //     triggerElement: $('.section-4'),
+        //     triggerHook: .5
+        // })
+        //     .setTween(timelineForSection4)
+        //     .addTo(controller);
 
 
         // create a scene for sectione 5
@@ -217,23 +217,23 @@ $(document).ready( () => {
     if ($('#ourVision').length > 0) {
         let timeline = new TimelineMax()
 
-        timeline.to($('.illustration .dots'), 1, {strokeWidth: 0 })
+        timeline.to($('.progress-2 li:nth-child(1)'), 1, {opacity: 0.3})
+        timeline.to($('.illustration .dots'), 1, {strokeWidth: 0 }, '<')
         timeline.to($('.description.no1'), 1, {y: '-20%', autoAlpha: 0 }, '<')
         timeline.to($('.body .body__text__no1'), 1, {y: '-10%', autoAlpha: 0 }, '<')
-        timeline.to($('.progress-2 li:nth-child(1)'), 1, {opacity: 0.3}, '<')
         timeline.to($('.no .no1 :last-child'), 1, {y: '10%', autoAlpha: 0 }, '>')
 
-        timeline.from($('.no .no2 :last-child'), 3, {y: '-100%',autoAlpha: 0, repeat: 1, yoyo: true}, '>')
+        timeline.to($('.progress-2 li:nth-child(2)'), 2, {opacity: 1, repeat: 1, yoyo: true}, '>')
+        timeline.from($('.no .no2 :last-child'), 3, {y: '-100%',autoAlpha: 0, repeat: 1, yoyo: true}, '<')
         timeline.to($('.illustration .square'), 2,  { strokeDashoffset: 0, delay: 1, repeat:1, yoyo: true}, '<')
         timeline.to($('.description.no2'), 2, {y: '-20%', autoAlpha: 1, repeat: 1, yoyo: true }, '<')
-        timeline.to($('.progress-2 li:nth-child(2)'), 2, {opacity: 1, repeat: 1, yoyo: true}, '<')
         timeline.fromTo($('.body .body__text__no2'), 2, {y: '10%', autoAlpha: 0}, {y: '0', autoAlpha: 1}, '<')
         timeline.to($('.body .body__text__no2'), 2, {y: '-10%', autoAlpha: 0}, '>' )
 
         timeline.from($('.no .no3 :last-child'), 1, {y: '20%', opacity: 0 })
-        timeline.to($('.illustration .circle'), 1, {strokeDashoffset: 0, yoyo: true, width: 0, height: 0}, '>')
-        timeline.to($('.description.no3'), 1, {y: '-20%', autoAlpha: 1 }, '<')
         timeline.to($('.progress-2 li:nth-child(3)'), 1, {opacity: 1}, '<')
+        timeline.to($('.illustration .circle'), 1, {strokeDashoffset: 0, yoyo: true, width: 0, height: 0}, '<')
+        timeline.to($('.description.no3'), 1, {y: '-20%', autoAlpha: 1 }, '<')
         timeline.fromTo($('.body .body__text__no3'), 1, {y: "10%", autoAlpha: 0 }, {y: 0, autoAlpha: 1 }, '<')
 
         new ScrollMagic.Scene({

@@ -353,76 +353,114 @@ nav.navbar {
 
   .fadeover {}
 
-  .section-4 {
-    place-items: center;
+  //.section-4 {
+  //  place-items: center;
+  //
+  //  .product-name {
+  //    position: relative;
+  //    color: $background;
+  //    font-size: 7rem;
+  //    grid-area: 2 / 1 / span 1 / -1;
+  //    z-index: 1;
+  //    text-transform: uppercase;
+  //    background: linear-gradient(269.86deg, $blue 0.12%, $gold 105.11%);
+  //    ;
+  //    -webkit-background-clip: text;
+  //    -webkit-text-fill-color: transparent;
+  //  }
+  //
+  //  #lines {
+  //    grid-area: 1/1/span 3/-1;
+  //    width: 33%;
+  //    justify-self: left;
+  //
+  //    line {
+  //      stroke: $gold;
+  //      border-image-source: linear-gradient(90deg, $gold 26.64%, rgba(0, 0, 0, 0) 46.62%);
+  //    }
+  //  }
+  //
+  //  .ring {
+  //    border: 1px solid $gold;
+  //    border-radius: 50%;
+  //    aspect-ratio: 1;
+  //  }
+  //
+  //  .product-container {
+  //    grid-area: 1 / 1 / -1 / -1;
+  //    height: 70vh;
+  //    display: flex;
+  //    justify-content: center;
+  //    align-items: center;
+  //
+  //    .inner {
+  //      height: 58vh;
+  //      display: flex;
+  //      justify-content: center;
+  //      align-items: center;
+  //
+  //      .circle {
+  //        display: flex;
+  //        justify-content: center;
+  //        align-items: center;
+  //        height: 60vh;
+  //        aspect-ratio: 1;
+  //
+  //        & svg {
+  //          circle {
+  //            fill: url(#goldToWhite);
+  //            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 25px rgba(0, 0, 0, 0.25));
+  //          }
+  //
+  //          .stop1 {
+  //            stop-color: #E1D5C2;
+  //          }
+  //
+  //          .stop2 {
+  //            stop-color: #F4F2EC;
+  //          }
+  //        }
+  //      }
+  //    }
+  //  }
+  //}
 
+  .section-4 {
     .product-name {
       position: relative;
-      color: $background;
-      font-size: 7rem;
-      grid-area: 2 / 1 / span 1 / -1;
-      z-index: 1;
-      text-transform: uppercase;
-      background: linear-gradient(269.86deg, $blue 0.12%, $gold 105.11%);
-      ;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    #lines {
-      grid-area: 1/1/span 3/-1;
-      width: 33%;
-      justify-self: left;
-
-      line {
-        stroke: $gold;
-        border-image-source: linear-gradient(90deg, $gold 26.64%, rgba(0, 0, 0, 0) 46.62%);
+      h2 {
+        color: $background;
+        z-index: 1;
+        background: linear-gradient(269.86deg, $blue 0.12%, $gold 105.11%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
     }
-
-    .ring {
-      border: 1px solid $gold;
-      border-radius: 50%;
-      aspect-ratio: 1;
-    }
-
-    .product-container {
-      grid-area: 1 / 1 / -1 / -1;
-      height: 70vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      .inner {
-        height: 58vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .circle {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 60vh;
-          aspect-ratio: 1;
-
-          & svg {
-            circle {
-              fill: url(#goldToWhite);
-              filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 25px rgba(0, 0, 0, 0.25));
-            }
-
-            .stop1 {
-              stop-color: #E1D5C2;
-            }
-
-            .stop2 {
-              stop-color: #F4F2EC;
-            }
-          }
-        }
+    .lines {
+      &:before {
+        content: '';
+        position: absolute;
+        height: 2px;
+        left: 0;
+        background: linear-gradient(0deg, $gold 26.64%, rgba(0, 0, 0, 0) 46.62%);
       }
-    }
+      &.line-1:before {
+        width: 30vw;
+        top: 0;
+      }
+
+      &.line-2:before {
+        width: 21.5vw;
+        top: 50%;
+      }
+
+      &.line-3:before {
+        width: 17.5vw;
+        top: 100%;
+      }
+      //stroke: $gold;
+      //border-image-source: linear-gradient(90deg, $gold 26.64%, rgba(0, 0, 0, 0) 46.62%);
+      }
   }
 
   .section-5 {
