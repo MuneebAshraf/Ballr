@@ -35,7 +35,7 @@ body {
   -ms-transition: background-color .2s;
   -o-transition: background-color .2s;
   transition: background-color .2s;
-  background-color: $background;
+  background-color: black;
 
   &.white {
     background: $white;
@@ -140,7 +140,7 @@ header {
 
 
 nav.navbar {
-  background-color: $background;
+  background-color: black;
   -webkit-transition: all .3s;
   -moz-transition: all .3s;
   -ms-transition: all .3s;
