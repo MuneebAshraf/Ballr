@@ -272,6 +272,20 @@ $(document).ready( () => {
             }
         })
     }
+
+    
 })
 
 
+// function collapseFunction() {
+//     var collapse = document.getElementById('ptext')
+
+//     if (collapse.style.display === "none") {
+//         collapse.style.display === "block"
+//     } else {
+//         collapse.style.display === "none"
+//     }
+   
+// }
+
+// collapseFunction()
