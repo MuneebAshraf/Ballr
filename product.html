@@ -68,9 +68,10 @@
         <div class="row preview-wrap">
             <div class="col product-image-wrap">
                 <div class="preview-container">
-                    <img class="preview" src="lib/Trimmer.png" alt="image">
-                    <img class="preview" src="lib/Trimmer.png" alt="image">
-                    <img class="preview" src="lib/Trimmer.png" alt="image">
+                    <img class="preview" src="lib/Trimmer.png" alt="image" id="preview-image-1"
+                        onmouseenter="previewImageOne()">
+                    <img class="preview" src="lib/Trimmer.png" alt="image" id="preview-image-2">
+                    <img class="preview" src="lib/Trimmer.png" alt="image" id="preview-image-3">
                 </div>
                 <div class="product-image-container">
                     <img src="lib/Trimmer.png" alt="image" width="100%" class="product-image">
@@ -93,53 +94,85 @@
                     </div>
                 </div>
 
-                <p class="w-75 lh-base mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio eu suscipit sed tempor. Viverra sem enim vitae in. Pretium fringilla velit vitae at ornare. Diam a vel libero in purus. At.</p>
+                <p class="w-75 lh-base mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio eu suscipit
+                    sed tempor. Viverra sem enim vitae in. Pretium fringilla velit vitae at ornare. Diam a vel libero in
+                    purus. At.</p>
 
+
+                    
 
                 <div class="collapse-descriptions">
                     <div class="collapse-container">
-                        <div class="testfunktion">
-                            <h6 class="testia">PRODUKTOPLYSNINGER</h6>
-                            <p class="d-none" id="ptext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio eu suscipit sed tempor. Viverra sem enim vitae in. Pretium fringilla velit vitae at ornare. Diam a vel libero in purus. At.</p>
+                        <div id="headingOne">
+                            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
+                                aria-expanded="false" aria-controls="collapseExample">
+                                <h6>PRODUKTOPLYSNINGER</h6>
+                            </a>
+                            <p class="collapse card card-body" id="collapseExample ">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
+                                eu suscipit sed tempor. Viverra sem enim vitae in. Pretium fringilla velit vitae at
+                                ornare. Diam a vel libero in purus. At.</p>
                         </div>
-                        <img src="lib/plus.svg" width="10px" alt="image" >
-                        <!-- <button onclick="collapseFunction()">test</button> -->
-                </div>
-                    <div class="collapse-container">
-                        <h6 class="testia">HVAD PAKKEN INDEHOLDER</h6>
                         <img src="lib/plus.svg" width="10px" alt="image">
-                </div>
-                    <div class="collapse-container">
-                        <h6 class="testia">SPECIFIKATIONER</h6>
-                        <img src="lib/plus.svg" width="10px" alt="image">
-                </div>
 
-                <div class="actions-wrap mt-4">
-                    <div class="d-flex actions-container">
-                        <i class="fa-solid fa-minus"></i>
-                        <h4 class="m-0">1</h4>
-                        <i class="fa-solid fa-plus"></i>
                     </div>
-                    <button class="add-to-cart">Tilføj til kurv</button>
+                    <div class="collapse-container">
+                        <div>
+                            <details>
+                                <summary>
+                                    <h6>HVAD PAKKEN INDEHOLDER</h6>
+                                </summary>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio eu suscipit sed tempor.
+                                    Viverra sem enim vitae in. Pretium fringilla velit vitae at ornare. Diam a vel
+                                    libero in purus. At.</p>
+                            </details>
+                        </div>
+                        <img src="lib/plus.svg" width="10px" alt="image">
+
+                    </div>
+
+                    <div class="collapse-container">
+                        <div>
+                            <details>
+                                <summary>
+                                    <h6>SPECIFIKATIONER</h6>
+                                </summary>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio eu suscipit sed tempor.
+                                    Viverra sem enim vitae in. Pretium fringilla velit vitae at ornare. Diam a vel
+                                    libero in purus. At.</p>
+                            </details>
+                        </div>
+                        <img src="lib/plus.svg" width="10px" alt="image">
+
+                    </div>
+
+
+                    <div class="actions-wrap mt-4">
+                        <div class="d-flex actions-container">
+                            <i class="fa-solid fa-minus"></i>
+                            <h4 class="m-0">1</h4>
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <button class="add-to-cart">Tilføj til kurv</button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="d-lg-flex justify-content-around m-lg-auto info-wrap">
-            <div class="d-flex align-items-center">
-            <img src="lib/package.svg" alt="image">
-            <p class="mb-0 ms-3">Lorum ipsum bla oeam dsad.</p>
-            </div>
-            <div class="d-flex align-items-center">
-            <img src="lib/return.svg" alt="image">
-            <p class="mb-0 ms-3">Lorum ipsum bla oeam dsad.</p>
+            <div class="d-lg-flex justify-content-around m-lg-auto info-wrap">
+                <div class="d-flex align-items-center">
+                    <img src="lib/package.svg" alt="image">
+                    <p class="mb-0 ms-3">Lorum ipsum bla oeam dsad.</p>
+                </div>
+                <div class="d-flex align-items-center">
+                    <img src="lib/return.svg" alt="image">
+                    <p class="mb-0 ms-3">Lorum ipsum bla oeam dsad.</p>
 
+                </div>
+                <div class="d-flex align-items-center">
+                    <img src="lib/payment.svg" alt="image">
+                    <p class="mb-0 ms-3">Lorum ipsum bla oeam dsad.</p>
+                </div>
             </div>
-            <div class="d-flex align-items-center">
-            <img src="lib/payment.svg" alt="image">
-                <p class="mb-0 ms-3">Lorum ipsum bla oeam dsad.</p>
-            </div>
-        </div>
     </section>
 
 

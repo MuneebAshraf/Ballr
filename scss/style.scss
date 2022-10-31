@@ -163,37 +163,37 @@ nav.navbar {
   .hero-section {
     position: relative;
 
-    &:before {
-      -webkit-animation-duration: 1s;
-      animation-duration: 1s;
-      -webkit-animation-fill-mode: both;
-      animation-fill-mode: both;
-      display: block;
-      content: '';
-      height: 2px;
-      grid-area: 3 / 1 / span 1 / span 2;
-      align-self: center;
-      background-color: $off-white;
-      border-radius: 0 100% 100% 0;
-      -webkit-animation-name: slideInLeft;
-      animation-name: slideInLeft;
-    }
+    // &:before {
+    //   -webkit-animation-duration: 1s;
+    //   animation-duration: 1s;
+    //   -webkit-animation-fill-mode: both;
+    //   animation-fill-mode: both;
+    //   display: block;
+    //   content: '';
+    //   height: 2px;
+    //   grid-area: 3 / 1 / span 1 / span 2;
+    //   align-self: center;
+    //   background-color: $off-white;
+    //   border-radius: 0 100% 100% 0;
+    //   -webkit-animation-name: slideInLeft;
+    //   animation-name: slideInLeft;
+    // }
 
-    &:after {
-      -webkit-animation-duration: 1s;
-      animation-duration: 1s;
-      -webkit-animation-fill-mode: both;
-      animation-fill-mode: both;
-      display: block;
-      content: '';
-      height: 2px;
-      grid-area: 3 / 4 / span 1 / span 2;
-      align-self: center;
-      background-color: $off-white;
-      border-radius: 100% 0 0 100%;
-      -webkit-animation-name: slideInRight;
-      animation-name: slideInRight;
-    }
+    // &:after {
+    //   -webkit-animation-duration: 1s;
+    //   animation-duration: 1s;
+    //   -webkit-animation-fill-mode: both;
+    //   animation-fill-mode: both;
+    //   display: block;
+    //   content: '';
+    //   height: 2px;
+    //   grid-area: 3 / 4 / span 1 / span 2;
+    //   align-self: center;
+    //   background-color: $off-white;
+    //   border-radius: 100% 0 0 100%;
+    //   -webkit-animation-name: slideInRight;
+    //   animation-name: slideInRight;
+    // }
 
     h1 {
       z-index: 1;
@@ -214,7 +214,7 @@ nav.navbar {
   .section-2 {
     align-items: center;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2rem;
 
     & * {
       -webkit-transition: all .5s;
@@ -1545,4 +1545,25 @@ width: 30vw;
   
   
 }
+
+
+
+
+#new-article {
+  background-color: white;
+
+  section {
+    color: #1C1C1C;
+  }
+}
+
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+
+
 

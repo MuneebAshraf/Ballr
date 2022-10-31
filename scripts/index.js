@@ -290,15 +290,20 @@ $(document).ready( () => {
 })
 
 
-// function collapseFunction() {
-//     var collapse = document.getElementById('ptext')
+function myFunction1() {
+    var y = document.getElementById('hallo')
+    if (y.style.display === "none") {
+      y.style.display = "block";
+    } else {
+      y.style.display = "none";
+    }
+  }
 
-//     if (collapse.style.display === "none") {
-//         collapse.style.display === "block"
-//     } else {
-//         collapse.style.display === "none"
-//     }
-   
-// }
+  myFunction1()
 
-// collapseFunction()
+
+  function previewImageOne() { 
+    var testie = document.querySelector('product-image');
+    testie.setAttribute('src', 'http://dummyimage.com/100x100/eb00eb/fff');
+    
+  }
