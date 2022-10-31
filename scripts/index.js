@@ -3,11 +3,11 @@ $(document).ready( () => {
     let controller = new ScrollMagic.Controller();
 
     if ($('#index').length > 0) {
-        let video_1 = document.querySelector( '#product-vid-1' )
-        let video_progress = 0;
-        let accelamount = 0.6;
-        let delay = 0.1;
-
+        // let video_1 = document.querySelector( '#product-vid-1' )
+        // let video_progress = 0;
+        // let accelamount = 0.6;
+        // let delay = 0.1;
+        //
         // setInterval( () => {
         //     delay += (video_progress - delay) * accelamount;
         //     console.log( video_progress, delay );
@@ -15,22 +15,22 @@ $(document).ready( () => {
         //     video_1.currentTime = delay;
         // }, 41.666 );
         //
-        document.addEventListener('scroll', (e) => {
-            let pos = document.documentElement.scrollTop;
-            let calcHeight = 
-                document.documentElement.scrollHeight -
-                document.documentElement.clientHeight;
-            
-            let scrollValue = ((pos * 100) / (calcHeight * 0.45))
-            let duration = video_1.duration;
-            video_progress = (scrollValue * ( duration / 100))
-            
-            if (( scrollValue * (duration / 100) ) > 8.3 ) {
-                $(video_1).addClass('zoomInExit')
-            } else {
-                $( video_1 ).removeClass('zoomInExit')
-            }
-        })
+        // document.addEventListener('scroll', (e) => {
+        //     let pos = document.documentElement.scrollTop;
+        //     let calcHeight =
+        //         document.documentElement.scrollHeight -
+        //         document.documentElement.clientHeight;
+        //
+        //     let scrollValue = ((pos * 100) / (calcHeight * 0.45))
+        //     let duration = video_1.duration;
+        //     video_progress = (scrollValue * ( duration / 100))
+        //
+        //     if (( scrollValue * (duration / 100) ) > 8.3 ) {
+        //         $(video_1).addClass('zoomInExit')
+        //     } else {
+        //         $( video_1 ).removeClass('zoomInExit')
+        //     }
+        // })
 
         //Der blevet brugt scroll magic hver gang "new ScrollMagic.Scene" er i spil.//
 
@@ -164,15 +164,28 @@ $(document).ready( () => {
         slideStatisticsIn.from( $( '.scale-wrapper-1' ), {opacity: 0, scale: ".75"}, '0.4')
         slideStatisticsIn.from( $( '.scale-wrapper-2' ), {opacity: 0, scale: ".75"}, '0.5')
         slideStatisticsIn.from( $( '.scale-wrapper-3' ), {opacity: 0, scale: ".75"}, '0.6')
-        new ScrollMagic.Scene( {
-            duration: "100%",
-            triggerElement: $( '.section-10' ),
-            triggerHook: .25,
-        } )
-            .setTween( slideStatisticsIn )
-            .setPin($('.section-10 .row'))
-            .addTo( controller );
-        
+
+        var screenSizeMD = window.matchMedia( "screen and (max-width:750px)" ).matches;
+
+        if ( screenSizeMD ) {
+            new ScrollMagic.Scene( {
+                duration: "100%",
+                triggerElement: $( '.section-10' ),
+                triggerHook: .25,
+            } )
+                .setTween( slideStatisticsIn )
+                .setPin( $( '.section-10 .row' ) )
+                .addTo( controller );
+        } else {
+            new ScrollMagic.Scene( {
+                duration: "100%",
+                triggerElement: $( '.section-10' ),
+                triggerHook: .1,
+            } )
+                .setTween( slideStatisticsIn )
+                .setPin( $( '.section-10 .row' ) )
+                .addTo( controller );
+        }
         
 
             
