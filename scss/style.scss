@@ -1,5 +1,9 @@
 @import "variables";
 @import "Brooklyn-font";
+@import "boostrap/bootstrap";
+@import "boostrap/bootstrap-grid";
+@import "boostrap/bootstrap-reboot";
+@import "boostrap/bootstrap-utilities";
 
 * {
   margin: 0;
@@ -26,7 +30,6 @@ html {
   font-family: Brooklyn-Normal, sans-serif;
   color: $off-white;
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 body {
@@ -36,10 +39,10 @@ body {
   -o-transition: background-color .2s;
   transition: background-color .2s;
   background-color: black;
+}
 
-  &.white {
-    background: $white;
-  }
+html, body {
+  overflow-x: hidden;
 }
 
 section {
@@ -74,19 +77,6 @@ header {
   -ms-transition: all .3s;
   -o-transition: all .3s;
   transition: all .3s;
-
-  &.white {
-    background-color: $white;
-
-    a {
-      color: $background;
-    }
-
-    .btn {
-      border-color: $background;
-      box-shadow: 0px 2px 2px #3E3E3E;
-    }
-  }
 
   &.grow {
     min-height: 150px;
@@ -305,7 +295,8 @@ nav.navbar {
     }
 
     #slogan-1 {
-      grid-area: 2/4/span 1/ span 2;
+      grid-area: 2/3/span 1/ -1;
+      text-align: right;
       translate: -100%;
       opacity: 0;
     }
@@ -472,7 +463,6 @@ nav.navbar {
       display: flex;
       flex-direction: column;
 
-
       &__blade-icon {
         display: flex;
         gap: 1em;
@@ -497,9 +487,19 @@ nav.navbar {
         max-width: 50%;
       }
     }
+
+    @include media-breakpoint-down(md) {
+      .info-container {
+        grid-area: 2 / 2 / 5 / 5;
+
+        &__text {
+          max-width: 100%;
+        }
+      }
+    }
   }
 
-  .section-7 {
+  .section-6 {
     color: $background;
     line-height: 2;
 
@@ -528,8 +528,16 @@ nav.navbar {
         font-size: 2.5rem;
         margin-bottom: 1em;
       }
+    }
 
-      
+    @include media-breakpoint-down(md) {
+      .info-container_1 {
+        grid-area: 2 / 2 / 5 / 5;
+
+        &__text {
+          max-width: 100%;
+        }
+      }
     }
     
   }
@@ -604,7 +612,7 @@ nav.navbar {
   section {
     min-height: calc(100vh - 104px);
     padding: 0 4em;
-    color: $blue;
+    color: $white;
     grid-template-areas:
       "no no . illustration ."
       "no no . illustration ."
@@ -637,11 +645,11 @@ nav.navbar {
     }
 
     &__progressbar {
-      stroke: $light-gray;
+      stroke: $border-grey;
     }
 
     &__progress {
-      stroke: $blue;
+      stroke: $gold;
       z-index: 1;
     }
   }
@@ -658,7 +666,7 @@ nav.navbar {
 
 
     li {
-      color: $blue;
+      color: $white;
       display: inline-block;
       margin-top: 2em;
       -webkit-transition: all .3s;
@@ -676,7 +684,7 @@ nav.navbar {
         display: inline-block;
         width: 20px;
         aspect-ratio: 1;
-        background-color: $blue;
+        background-color: $white;
         border-radius: 50%;
       }
 
@@ -699,6 +707,7 @@ nav.navbar {
     .no1,
     .no2,
     .no3 {
+      color: $gold;
       grid-row: 1/span 1;
       grid-column: 1 / span 1;
       justify-self: start;
@@ -708,6 +717,11 @@ nav.navbar {
       grid-row: 1/span 1;
       grid-column: 2 / span 1;
       justify-self: start;
+      font-size: 1.5rem;
+      font-family: Brooklyn-Italic, sans-serif;
+      line-height: 1.5rem;
+      margin-bottom: 4rem;
+      color: $white;
 
       &.no2,
       &.no3 {
@@ -720,24 +734,21 @@ nav.navbar {
       grid-column: 1 / span 1;
       color: transparent;
       -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: $blue;
+      -webkit-text-stroke-color: $white;
     }
 
-    .description {
-      font-size: 1.5rem;
-      font-family: Brooklyn-Italic, sans-serif;
-      line-height: 1.5rem;
-      margin-bottom: 4rem;
-    }
   }
 
   .body {
     grid-area: body;
     padding-top: 3em;
+    font-weight: 100;
+
+    b {
+      font-family: Brooklyn-Heavy, sans-serif;
+    }
 
     &__text {
-      font-size: 1.1rem;
-      line-height: 2;
       display: inline-grid;
       grid-template-rows: repeat(5, 1fr);
 
@@ -757,6 +768,7 @@ nav.navbar {
   }
 
   .bg {
+    font-family: Brooklyn-Heavy, sans-serif;
     grid-area: 4 / 3 / span 2 / -1;
     background: linear-gradient(180deg, #8D8D8D 0%, rgba(141, 141, 141, 0) 100%);
     -webkit-background-clip: text;
@@ -766,8 +778,7 @@ nav.navbar {
     -webkit-text-fill-color: transparent;
     font-size: clamp(6.5rem, 15vw, 17rem);
     text-align: right;
-    line-height: 1;
-    opacity: 0.15;
+    opacity: 0.05;
     margin: 0;
   }
 
@@ -784,14 +795,14 @@ nav.navbar {
     }
 
     .dots {
-      stroke: $blue;
+      stroke: $white;
       stroke-linecap: round;
       opacity: .4;
     }
 
     .square {
       justify-self: center;
-      stroke: $blue;
+      stroke: $white;
       fill: transparent;
       transform: rotate(45deg) !important;
       stroke-dasharray: 500;
@@ -802,7 +813,7 @@ nav.navbar {
     .circle {
       stroke-dasharray: 1000;
       stroke-dashoffset: 1000;
-      stroke: $blue;
+      stroke: $white;
       fill: transparent;
       opacity: .3;
 
@@ -978,6 +989,12 @@ canvas {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   opacity: 0.1;
+}
+
+@include media-breakpoint-down(md) {
+  .kontaktSide {
+    left: 2vw;
+  }
 }
 
 .polygon1 {
@@ -1459,10 +1476,6 @@ width: 30vw;
   .pris {
     margin-left: 1vw;
   }
-
-  
-
-
 
   @media only screen and (max-width: 1000px) {
      

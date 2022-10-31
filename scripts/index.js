@@ -41,7 +41,7 @@ $(document).ready( () => {
             reverse: false,
             offset: $('.nav').height()
         })
-            .setClassToggle( $( video_1 ), 'animate__animated animate__slideInUp' )
+            //.setClassToggle( $( video_1 ), 'animate__animated animate__slideInUp' )
 
             .addTo(controller)
         // slide slogns ind
