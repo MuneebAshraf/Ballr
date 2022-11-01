@@ -902,6 +902,14 @@ canvas {
   line-height: 200%;
   width: 50vw;
 }
+@include media-breakpoint-down(md) {
+.kontaktP {
+  text-align: justify;
+  padding: 0 1.25em;
+  width: 100%;
+}
+
+}
 
 .geInTouch {
   font-size: 2rem;
@@ -1002,9 +1010,9 @@ canvas {
 @include media-breakpoint-down(md) {
   .kontaktSide {
     left: 0;
-    top: 30%;
-    translate: -30%, 0;
-    font-size: 3em;
+    top: 50%;
+    translate: -50%, 0;
+    font-size: 2.25em;
     text-align: center;
   }
 }

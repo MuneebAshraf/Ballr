@@ -98,20 +98,20 @@ $(document).ready( () => {
 
 
         // fade the circles in and then fade text with lines
-        // let timelineForSection4 = new TimelineMax();
-        // timelineForSection4.fromTo($('.product-container.ring'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1}, ".2")
-        // timelineForSection4.fromTo($('.inner.ring'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1}, ".4")
-        // timelineForSection4.fromTo($('.circle'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1},".6")
-        // timelineForSection4.fromTo($('.product-name'), {opacity: 0, x: -300}, {opacity: 1, x: 0})
-        // timelineForSection4.fromTo($('#lines'), {opacity: 0, width: 0}, {opacity: 1, width: "33%"}, "<")
-        //
-        // new ScrollMagic.Scene({
-        //     duration: "40%",
-        //     triggerElement: $('.section-4'),
-        //     triggerHook: .5
-        // })
-        //     .setTween(timelineForSection4)
-        //     .addTo(controller);
+        let timelineForSection4 = new TimelineMax();
+        timelineForSection4.fromTo($('.product-container.ring'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1}, ".2")
+        timelineForSection4.fromTo($('.inner.ring'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1}, ".4")
+        timelineForSection4.fromTo($('.circle'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1},".6")
+        timelineForSection4.fromTo($('.product-name'), {opacity: 0, x: -300}, {opacity: 1, x: 0})
+        timelineForSection4.fromTo($('#lines'), {opacity: 0, width: 0}, {opacity: 1, width: "33%"}, "<")
+
+        new ScrollMagic.Scene({
+            duration: "40%",
+            triggerElement: $('.section-4'),
+            triggerHook: .5
+        })
+            .setTween(timelineForSection4)
+            .addTo(controller);
 
 
         // create a scene for sectione 5
@@ -286,24 +286,14 @@ $(document).ready( () => {
         })
     }
 
-    
-})
-
-
-function myFunction1() {
-    var y = document.getElementById('hallo')
-    if (y.style.display === "none") {
-      y.style.display = "block";
-    } else {
-      y.style.display = "none";
+    if ($('#body-product').length > 0) {
+       
+        let primaryImg = document.querySelector('.product-image');
+        $('.preview').on('mouseenter', (event) => {
+            event.preventDefault();
+            event.stopPropagation()
+            primaryImg.src = "event.target.src";
+        })
+            
     }
-  }
-
-  myFunction1()
-
-
-  function previewImageOne() { 
-    var testie = document.querySelector('product-image');
-    testie.setAttribute('src', 'http://dummyimage.com/100x100/eb00eb/fff');
-    
-  }
+})
