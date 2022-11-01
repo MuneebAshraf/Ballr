@@ -1077,12 +1077,12 @@ canvas {
 
 #section-article {
   display: block !important;
- 
+
 
 
   .article-title-wrap {
     margin-top: 15vh;
-    margin-left: 20vw; 
+    margin-left: 20vw;
 
     .article-title-container {
       position: relative;
@@ -1113,7 +1113,7 @@ canvas {
 
   }
 
-  
+
 
   .article-text {
     width: 50vw;
@@ -1156,16 +1156,153 @@ canvas {
     }
 
     .article-text {
-      
+
       h3 {
-       margin-top: 10vh;
-       font-size: 1.2rem;
+        margin-top: 10vh;
+        font-size: 1.2rem;
       }
     }
 
-   
+
   }
 }
+
+
+//Blog-side
+
+.section-blog {
+  display: block !important;
+
+  background-color: black;
+
+  
+
+  .section-1-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 104px);
+    background-image: url("../lib/isai-ramos-YkFYP_zAT6k-unsplash.jpg");
+    background-position: center;
+    background-size: contain;
+    color: white;
+    text-align: center;
+    width: 100%;
+    justify-content: space-between;
+    padding: 5vh;
+
+    h1 {
+      font-size: 7rem;
+      letter-spacing: 20px;
+      margin-top: auto;
+    }
+
+    p {
+      width: 30vw;
+      margin: auto;
+      line-height: 2;
+    }
+    
+    @include media-breakpoint-down(md) {
+      h1 {
+        font-size: 2rem;
+        line-height: 2;
+      }
+      
+      p {
+        width: 75vw;
+      }
+    }
+
+  }
+
+  .all-article-btn:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\2b";
+    margin-left: 1vw;
+  }
+  
+  
+  .explore-btn {
+    color: #9D2F2F;
+    font-weight: bold;
+  }
+
+  #section-2,
+  #section-3 {
+    height: 100vh;
+  }
+
+
+  #section-2 {
+    background-image: url("../lib/Hand-bg.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    h1 {
+      font-size: 4rem;
+      font-weight: bold;
+    }
+
+    .author-wrap {
+      margin-bottom: 15vh;
+    }
+    
+    @include media-breakpoint-down(md) {
+      h1 {
+        font-size: 1.5rem;
+        line-height: 2;
+      }
+      
+      p {
+        width: 75vw;
+      }
+
+      .author-wrap {
+        margin-bottom: 5vh;
+      }
+    }
+  }
+  
+  #section-3 {
+    background-image: url("../lib/Eye-BG.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: repeat;
+    justify-content: start;
+    
+    h1 {
+      font-size: 4rem;
+      font-weight: bold;
+      margin-top: 20vh;
+    }
+
+    .author-wrap {
+      margin-bottom: 15vh;
+    }
+
+    @include media-breakpoint-down(md) {
+      h1 {
+        font-size: 1.5rem;
+        line-height: 2;
+      }
+      
+      p {
+        width: 75vw;
+      }
+
+      .author-wrap {
+        margin-bottom: 5vh;
+      }
+    }
+
+  }
+
+  
+}
+
 
 
 //Specifik artikel//
