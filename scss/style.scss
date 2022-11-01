@@ -1073,11 +1073,13 @@ canvas {
   height: 100%;
   width: 100%;
   background-repeat: repeat;
+  background-color: white;
 }
 
 #section-article {
   display: block !important;
-
+  color: #1C1C1C;
+  padding-bottom: 10vh;
 
 
   .article-title-wrap {
@@ -1172,9 +1174,12 @@ canvas {
 
 .section-blog {
   display: block !important;
-
-  background-color: black;
-
+  
+  
+  .all-article-bg {
+    background-image: url("../lib/Lines-bg-white.svg");
+    background-size: cover;
+  }
   
 
   .section-1-hero {
@@ -1183,8 +1188,7 @@ canvas {
     flex-direction: column;
     height: calc(100vh - 104px);
     background-image: url("../lib/isai-ramos-YkFYP_zAT6k-unsplash.jpg");
-    background-position: center;
-    background-size: contain;
+    background-size: cover;
     color: white;
     text-align: center;
     width: 100%;
@@ -1302,6 +1306,48 @@ canvas {
 
   
 }
+
+
+//all-articles 
+
+  
+  .section-all-articles {
+    background-image: url(../lib/isai-ramos-YkFYP_zAT6k-unsplash.jpg);
+    background-size: cover;
+    display: block !important;
+    height: calc(100vh - 104px);
+    position: relative;
+
+    .all-article-bg {
+      background-image: url("../lib/Lines-bg-white.svg");
+      background-size: cover;
+    }
+    
+    .section-all-articles-container {
+      height: calc(100vh - 104px);
+      align-items: center;
+      justify-content: space-between;
+
+      .flex-column {
+        gap: 10vh;
+        margin: 0 5vw;
+      }
+      
+      a {
+        font-size: 1.5rem;
+      }
+    }
+    
+    @include media-breakpoint-down(md) {
+      .flex-column {
+       a  {
+        font-size: 1rem;
+      }
+      }
+    }
+    
+  }
+  
 
 
 
@@ -1648,10 +1694,3 @@ footer {
 
 
 
-#new-article {
-  background-color: white;
-
-  section {
-    color: #1C1C1C;
-  }
-}
