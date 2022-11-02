@@ -1,5 +1,5 @@
 $(document).ready( () => {
-
+    let screenSizeMD = window.matchMedia( "screen and (max-width:750px)" ).matches;
     let controller = new ScrollMagic.Controller();
 
     if ($('#index').length > 0) {
@@ -104,16 +104,25 @@ $(document).ready( () => {
         timelineForSection4.fromTo($('.circle'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1},".6")
         timelineForSection4.fromTo($('.product-name'), {opacity: 0, x: -300}, {opacity: 1, x: 0})
         timelineForSection4.fromTo($('#lines'), {opacity: 0, width: 0}, {opacity: 1, width: "33%"}, "<")
-
+    if ( !screenSizeMD ) {
         new ScrollMagic.Scene({
-            duration: "40%",
+            duration: "80%",
             triggerElement: $('.section-4'),
-            triggerHook: .5
+            triggerHook: .175
         })
+            .setPin($('.section-4'))
             .setTween(timelineForSection4)
             .addTo(controller);
-
-
+    } else {
+        new ScrollMagic.Scene( {
+            duration: "80%",
+            triggerElement: $( '.section-4' ),
+            triggerHook: .3
+        } )
+            .setPin( $( '.section-4' ) )
+            .setTween( timelineForSection4 )
+            .addTo( controller );
+    }
         // create a scene for sectione 5
         let timelineForSection5 = new TimelineMax();
         timelineForSection5.from($('.info-container__blade-icon'), {opacity:0, x: 100})
@@ -128,11 +137,11 @@ $(document).ready( () => {
             .setTween(timelineForSection5)
             .addTo(controller); // assign the scene to the controller
 
-    // create a scene for sectione 7
-    let timelineForSection7 = new TimelineMax();
-    timelineForSection7.from($('.info-container__blade-icon_1'), {opacity:0, x: -100})
-    timelineForSection7.from($('.info-container__title_1'), {opacity:0, x: -100}, ".2")
-    timelineForSection7.from($('.info-container__text_1'), {opacity:0, x: -100}, ".4")
+    // create a scene for sectione 6
+    let timelineForSection6 = new TimelineMax();
+    timelineForSection6.from($('.info-container__blade-icon_1'), {opacity:0, x: -100})
+    timelineForSection6.from($('.info-container__title_1'), {opacity:0, x: -100}, ".2")
+    timelineForSection6.from($('.info-container__text_1'), {opacity:0, x: -100}, ".4")
 
     new ScrollMagic.Scene({
         duration: "50%",
@@ -140,22 +149,21 @@ $(document).ready( () => {
         triggerHook: "onEnter",
     })
 
-
-        .setTween(timelineForSection7)
+        .setTween(timelineForSection6)
         .addTo(controller); // assign the scene to the controller
 
 
-            //make body change color when entering "Section-9"
+        //make body change color when entering "Section-7"
         new ScrollMagic.Scene({
             duration: "50%",
-            triggerElement: $('.section-9'),
-            triggerHook: "onEnter",
+            triggerElement: $('.section-7'),
+            triggerHook: "onCenter",
         })
-            .setTween( TweenMax.to( $( 'body' ), {backgroundColor: "#1C1C1C"} ))
+            .setTween( TweenMax.to( $( 'body' ), {backgroundColor: "black"} ))
             .addTo(controller);
 
 
-        //fade in effect when entering "Section-10"
+        //fade in effect when entering "Section-8"
         let slideStatisticsIn = new TimelineMax();
         slideStatisticsIn.from( $( '.statistics-title' ), {opacity: 0, x: "-10%"} )
         slideStatisticsIn.from( $( '.statistics-body' ), {opacity: 0, x: "-10%"}, '0.1')
@@ -165,66 +173,25 @@ $(document).ready( () => {
         slideStatisticsIn.from( $( '.scale-wrapper-2' ), {opacity: 0, scale: ".75"}, '0.5')
         slideStatisticsIn.from( $( '.scale-wrapper-3' ), {opacity: 0, scale: ".75"}, '0.6')
 
-        var screenSizeMD = window.matchMedia( "screen and (max-width:750px)" ).matches;
-
         if ( screenSizeMD ) {
             new ScrollMagic.Scene( {
                 duration: "100%",
-                triggerElement: $( '.section-10' ),
-                triggerHook: .25,
+                triggerElement: $( '.section-8' ),
+                triggerHook: .1,
             } )
                 .setTween( slideStatisticsIn )
-                .setPin( $( '.section-10 .row' ) )
+                .setPin( $( '.section-8 .row' ) )
                 .addTo( controller );
         } else {
             new ScrollMagic.Scene( {
                 duration: "100%",
-                triggerElement: $( '.section-10' ),
-                triggerHook: .1,
+                triggerElement: $( '.section-8' ),
+                triggerHook: .2,
             } )
                 .setTween( slideStatisticsIn )
-                .setPin( $( '.section-10 .row' ) )
+                .setPin( $( '.section-8 .row' ) )
                 .addTo( controller );
         }
-        
-
-            
-        //     let hurtighurtig = new TimelineMax();
-        //     hurtighurtig.to($('.geInTouch'), 1, { strokeWidth: 0 })
-        // new ScrollMagic.Scene( {
-        //     duration: "50%",
-        //     triggerElement: $( '.section-kontakt' ),
-        //     triggerHook: 0.55,
-        // } )
-        //     .setTween( hurtighurtig )
-        //     .addTo( controller );
-
-
-        // // create a scene for sectione 8
-    //     let section8Timeline = new TimelineMax()
-    //     let array = $('.section-8 span:not(.excluded)');
-    //     for (let i = 0; i < array.length; i++) {
-    //         let gridCol = randomInt(1,5)
-    //         let gridRow = randomInt(1,5)
-    //         let rotation = randomInt( -40, 40 )
-    //         let fontSize = randomInt(1.50, 6, false)
-    //         $(array[i]).css('grid-area', `${gridRow} /${gridCol} / -1 / -1 `)
-    //
-    //         console.log($(array[i]))
-    //
-    //         section8Timeline.fromTo($(array[i]), i, {scale: 5}, {opacity: 1, scale: 1, rotation: rotation, fontSize: fontSize+'rem'})
-    //     }
-    //     section8Timeline.to($('body'), {backgroundColor: "#1C1C1C"})
-    //
-    //     new ScrollMagic.Scene({
-    //         duration: "100%",
-    //         triggerElement: $('.section-8'),
-    //         triggerHook: .1,
-    //     })
-    //         .setTween(section8Timeline)
-    //         .setPin($('.section-8'))
-    //         .addTo(controller)
-
     }
 
     if ($('#ourVision').length > 0) {
@@ -297,6 +264,26 @@ $(document).ready( () => {
             
     }
 
+    if ( $( '#blog-page').length > 0 ) {
+        AOS.init();
+    }
+
+    if ( $( '#all-article-page' ).length > 0 ) {
+        AOS.init();
+
+        $('.article-link').on('mouseleave', (e) => {
+            let imgUrl = `url("/lib/isai-ramos-YkFYP_zAT6k-unsplash.jpg")`;
+            $( '.section-all-articles' )
+                .css( 'background-image', imgUrl )
+        })
+        $('.article-link').on('mouseenter', (e) => {
+            let imgUrl = `url(/lib/${$( e.target ).data( 'url' )})`
+            console.log( imgUrl )
+            $( '.section-all-articles' ).css( 'background-image', imgUrl )
+        })
+
+
+    }
 
 })
 
