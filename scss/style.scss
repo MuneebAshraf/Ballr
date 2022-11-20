@@ -126,7 +126,7 @@ nav.navbar {
 
 #index {
   .product-vid {
-    z-index: 1;
+    z-index: -1;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -135,29 +135,28 @@ nav.navbar {
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    width: 100%;
     display: flex;
     place-content: center;
     place-items: center;
-    max-height: 75vh;
+    -webkit-transition: opacity .3s;
+    -moz-transition: opacity .3s;
+    -ms-transition: opacity .3s;
+    -o-transition: opacity .3s;
+    transition: opacity .3s;
+    opacity: 0;
+
+    &.fadeIn {
+      opacity: 1;
+    }
 
     .video {
-      max-height: 65vh;
-      width: 80%;
-      -webkit-transition: all .3s;
-      -moz-transition: all .3s;
-      -ms-transition: all .3s;
-      -o-transition: all .3s;
-      transition: all .3s;
+      height: 70vh;
+      width: 70vw;
+    }
 
-      &.zoomInExit {
-        opacity: 0;
-        -webkit-transform: scale(3);
-        -moz-transform: scale(3);
-        -ms-transform: scale(3);
-        -o-transform: scale(3);
-        transform: scale(3);
-      }
+    .img {
+      height: 70vh;
+      width: 70vw;
     }
   }
 
@@ -338,6 +337,23 @@ nav.navbar {
         border: 1px solid $gold;
         border-radius: 50%;
         aspect-ratio: 1;
+        @mixin aspect($width: 1, $height: 1) {
+          aspect-ratio: $width / $height;
+
+          @supports not (aspect-ratio: $width / $height) {
+            &::before {
+              content: '';
+              float: left;
+              padding-top: calc((#{$height} / #{$width}) * 100%);
+            }
+
+            &::after {
+              content: '';
+              display: block;
+              clear: both;
+            }
+          }
+        }
       }
 
       .product-container {
@@ -359,6 +375,23 @@ nav.navbar {
             align-items: center;
             height: 60vh;
             aspect-ratio: 1;
+            @mixin aspect($width: 1, $height: 1) {
+              aspect-ratio: $width / $height;
+
+              @supports not (aspect-ratio: $width / $height) {
+                &::before {
+                  content: '';
+                  float: left;
+                  padding-top: calc((#{$height} / #{$width}) * 100%);
+                }
+
+                &::after {
+                  content: '';
+                  display: block;
+                  clear: both;
+                }
+              }
+            }
 
             & svg {
               circle {
@@ -567,6 +600,23 @@ nav.navbar {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
         aspect-ratio: 1;
+        @mixin aspect($width: 1, $height: 1) {
+          aspect-ratio: $width / $height;
+
+          @supports not (aspect-ratio: $width / $height) {
+            &::before {
+              content: '';
+              float: left;
+              padding-top: calc((#{$height} / #{$width}) * 100%);
+            }
+
+            &::after {
+              content: '';
+              display: block;
+              clear: both;
+            }
+          }
+        }
         place-items: center;
 
         img {
@@ -667,6 +717,23 @@ nav.navbar {
         display: inline-block;
         width: 20px;
         aspect-ratio: 1;
+        @mixin aspect($width: 1, $height: 1) {
+          aspect-ratio: $width / $height;
+
+          @supports not (aspect-ratio: $width / $height) {
+            &::before {
+              content: '';
+              float: left;
+              padding-top: calc((#{$height} / #{$width}) * 100%);
+            }
+
+            &::after {
+              content: '';
+              display: block;
+              clear: both;
+            }
+          }
+        }
         background-color: $white;
         border-radius: 50%;
       }
@@ -772,6 +839,23 @@ nav.navbar {
     justify-self: end;
     align-self: center;
     aspect-ratio: 1;
+    @mixin aspect($width: 1, $height: 1) {
+      aspect-ratio: $width / $height;
+
+      @supports not (aspect-ratio: $width / $height) {
+        &::before {
+          content: '';
+          float: left;
+          padding-top: calc((#{$height} / #{$width}) * 100%);
+        }
+
+        &::after {
+          content: '';
+          display: block;
+          clear: both;
+        }
+      }
+    }
 
     line {
       stroke-dasharray: 1, 10%;
@@ -859,16 +943,6 @@ nav.navbar {
   }
 }
 
-canvas {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  max-height: 100vh;
-  max-width: 100vw;
-  transform: translate(-50%, -50%);
-}
-
-
 // Kontakt //
 
 #kontakt {
@@ -936,7 +1010,7 @@ canvas {
 
 .mail::after {
   content: "";
-  background: url("/lib/Pil.svg");
+  background: url("/lib/img/Pil.svg");
   width: 30px;
   height: 30px;
   background-size: contain;
@@ -977,7 +1051,7 @@ canvas {
 .linkedin::before {
   content: "";
   display: inline-flex;
-  background: url(/lib/Linkedin.png);
+  background: url(/lib/img/Linkedin.png);
   background-size: cover;
   width: 30px;
   height: 30px;
@@ -987,7 +1061,7 @@ canvas {
 .facebook::before {
   content: "";
   display: inline-flex;
-  background: url(/lib/facebook.png);
+  background: url(/lib/img/facebook.png);
   background-size: cover;
   width: 40px;
   height: 40px;
@@ -997,7 +1071,7 @@ canvas {
 .instagram::before {
   content: "";
   display: inline-flex;
-  background: url(/lib/Instagram.png);
+  background: url(/lib/img/Instagram.png);
   background-size: cover;
   width: 30px;
   height: 30px;
@@ -1053,7 +1127,7 @@ canvas {
 // Ny-artikel 
 
 #new-article {
-  background-image: url("/lib/Lines-bg.svg");
+  background-image: url("/lib/img/Lines-bg.svg");
   background-size: contain;
   height: 100%;
   width: 100%;
@@ -1162,7 +1236,7 @@ canvas {
 
 
   .all-article-bg {
-    background-image: url("lib/Lines-bg-white.svg");
+    background-image: url("lib/img/Lines-bg-white.svg");
     background-size: cover;
   }
 
@@ -1175,7 +1249,7 @@ canvas {
   @include media-breakpoint-up(md) {
     height: calc(100vh - 104px);
   }
-    background-image: url(/lib/isai-ramos-YkFYP_zAT6k-unsplash.jpg);
+    background-image: url(/lib/img/isai-ramos-YkFYP_zAT6k-unsplash.jpg);
     background-size: cover;
     color: white;
     text-align: center;
@@ -1230,7 +1304,7 @@ canvas {
 
 
   #section-2 {
-    background-image: url("/lib/Hand-bg.png");
+    background-image: url("/lib/img/Hand-bg.png");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -1261,7 +1335,7 @@ canvas {
   }
 
   #section-3 {
-    background-image: url("/lib/Eye-BG.png");
+    background-image: url("/lib/img/Eye-BG.png");
     background-position: center;
     background-size: cover;
     background-repeat: repeat;
@@ -1300,7 +1374,7 @@ canvas {
 
 //all-articles 
 .section-all-articles {
-  background-image: url("/lib/isai-ramos-YkFYP_zAT6k-unsplash.jpg");
+  background-image: url("/lib/img/isai-ramos-YkFYP_zAT6k-unsplash.jpg");
   background-size: cover;
   background-position: center;
   display: block !important;
@@ -1316,7 +1390,7 @@ canvas {
   transition: background .3s;
 
   .all-article-bg {
-    background-image: url("/lib/Lines-bg-white.svg");
+    background-image: url("/lib/img/Lines-bg-white.svg");
     background-size: cover;
   }
 

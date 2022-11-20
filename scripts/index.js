@@ -1,12 +1,75 @@
 $(document).ready( () => {
     let screenSizeMD = window.matchMedia( "screen and (max-width:750px)" ).matches;
     let controller = new ScrollMagic.Controller();
-
+    
     if ($('#index').length > 0) {
-        // let video_1 = document.querySelector( '#product-vid-1' )
+        // Canvas settings
+        const canvas = document.querySelector( ".video" );
+        const context = canvas.getContext( "2d" );
+
+        canvas.width = 1920;
+        canvas.height = 1080;
+
+
+        // Preloading images to drastically improve performance
+        const currentFrame = index => (`/lib/trimmer-sequence/ezgif-frame-${index.toString().padStart( 3, '0' )}.jpg`);
+        const frameCount = 599; // There 148 images for that animation-sequence to load
+        const images = [];
+
+        const preloadImages = () => {
+            for ( let i = 1; i <= frameCount; i++ ) {
+                images[ i ] = new Image(); // This is functionally equivalent to document.createElement('img').
+                images[ i ].src = currentFrame( i );
+            }
+        };
+
+        preloadImages();
+
+        // Draw the first image
+        const img = new Image();
+        img.src = currentFrame( 1 );
+        img.onload = function () {
+            context.drawImage( img, 0, 0 );
+            // for ( let i = 1 ; i <= 101; i++ ) {
+            //     requestAnimationFrame( () => {
+            //         let frameindex = images[ frameIndex + 1 ];
+            //         frameindex && context.drawImage( frameindex, 0, 0 )
+            //     } )
+            // }
+        }
+
+        // Scroll interactions
+        const html = document.getElementsByTagName( 'html' );
+
+        window.addEventListener( 'scroll', () => {
+            const scrollTop = html[ 0 ].scrollTop;
+            console.log('scrollTop: ', scrollTop);
+            console.log('html.scrollHeight: ', html[0].scrollHeight);
+            console.log('window.innerHeight: ', window.innerHeight);
+            const maxScrollTop = (html[ 0 ].scrollHeight - window.innerHeight) * 0.5;
+            const scrollFraction = scrollTop / maxScrollTop;
+            const frameIndex = Math.min(
+                frameCount - 1,
+                Math.floor( scrollFraction * frameCount )
+            );
+            console.log('FrameIndex', frameIndex);
+            if ( scrollTop > 1 ) {
+                $( ".product-vid" ).addClass( 'fadeIn' )
+            } else {
+                $( ".product-vid" ).removeClass( 'fadeIn' )
+            }
+            
+            requestAnimationFrame( () => {
+                let frameindex = images[ frameIndex + 1 ];
+                frameindex && context.drawImage( frameindex, 0, 0 )
+            } );
+        } );
+      
+        //failed forsøg 
+        // let video_1 = document.querySelector( '.video' )
         // let video_progress = 0;
-        // let accelamount = 0.6;
-        // let delay = 0.1;
+        // let accelamount = 0.1;
+        // let delay = 0.1;    
         //
         // setInterval( () => {
         //     delay += (video_progress - delay) * accelamount;
