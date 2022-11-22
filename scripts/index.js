@@ -1,103 +1,116 @@
 $(document).ready( () => {
-    let screenSizeMD = window.matchMedia( "screen and (max-width:750px)" ).matches;
+    // screen is smaller than 750px
+    let isSmallerThanMD = window.matchMedia( "screen and (max-width:750px)" ).matches;
     let controller = new ScrollMagic.Controller();
+    let triggerHook = null;
     
     if ($('#index').length > 0) {
-        // Canvas settings
-        const canvas = document.querySelector( ".video" );
-        const context = canvas.getContext( "2d" );
-
-        canvas.width = 1920;
-        canvas.height = 1080;
-
-
         // Preloading images to drastically improve performance
-        const currentFrame = index => (`/lib/trimmer-sequence/ezgif-frame-${index.toString().padStart( 3, '0' )}.jpg`);
-        const frameCount = 599; // There 148 images for that animation-sequence to load
-        const images = [];
+        const currentFrame = (path, index, fileType) => (`/lib/${path}/${path}-${index.toString().padStart( 5, '0' )}.${fileType}`);
+        // const frameCount = 178; // There 148 images for that animation-sequence to load
 
-        const preloadImages = () => {
-            for ( let i = 1; i <= frameCount; i++ ) {
+        const preloadImages = (path, frameCount, fileType) => {
+            let images = [];
+            for ( let i = 1; i < frameCount; i++ ) {
                 images[ i ] = new Image(); // This is functionally equivalent to document.createElement('img').
-                images[ i ].src = currentFrame( i );
+                images[ i ].src = currentFrame( path, i, fileType);
             }
+            return images;
         };
+        const setupCanvas = (canvas, frameCount, path, fileType = "jpg") => {// Canvas settings
+            let width = 1024;
+            let height = 576;
+            
+            const context = canvas.getContext( "2d" );
+            const images = preloadImages( path , frameCount, fileType);
+            canvas.width = width;
+            canvas.height = height;
 
-        preloadImages();
-
-        // Draw the first image
-        const img = new Image();
-        img.src = currentFrame( 1 );
-        img.onload = function () {
-            context.drawImage( img, 0, 0 );
-            // for ( let i = 1 ; i <= 101; i++ ) {
-            //     requestAnimationFrame( () => {
-            //         let frameindex = images[ frameIndex + 1 ];
-            //         frameindex && context.drawImage( frameindex, 0, 0 )
-            //     } )
-            // }
-        }
-
-        // Scroll interactions
-        const html = document.getElementsByTagName( 'html' );
-
-        window.addEventListener( 'scroll', () => {
-            const scrollTop = html[ 0 ].scrollTop;
-            console.log('scrollTop: ', scrollTop);
-            console.log('html.scrollHeight: ', html[0].scrollHeight);
-            console.log('window.innerHeight: ', window.innerHeight);
-            const maxScrollTop = (html[ 0 ].scrollHeight - window.innerHeight) * 0.5;
-            const scrollFraction = scrollTop / maxScrollTop;
-            const frameIndex = Math.min(
-                frameCount - 1,
-                Math.floor( scrollFraction * frameCount )
-            );
-            console.log('FrameIndex', frameIndex);
-            if ( scrollTop > 1 ) {
-                $( ".product-vid" ).addClass( 'fadeIn' )
-            } else {
-                $( ".product-vid" ).removeClass( 'fadeIn' )
+            // Draw the first image
+            const img = new Image();
+            img.src = currentFrame( path, 1 , fileType);
+            img.onload = function () {
+                context.clearRect( 0, 0, width, height );
+                context.drawImage( img, 0, 0 ); // destination rectangle
             }
             
-            requestAnimationFrame( () => {
-                let frameindex = images[ frameIndex + 1 ];
-                frameindex && context.drawImage( frameindex, 0, 0 )
-            } );
-        } );
-      
-        //failed forsøg 
-        // let video_1 = document.querySelector( '.video' )
-        // let video_progress = 0;
-        // let accelamount = 0.1;
-        // let delay = 0.1;    
-        //
-        // setInterval( () => {
-        //     delay += (video_progress - delay) * accelamount;
-        //     console.log( video_progress, delay );
-        //
-        //     video_1.currentTime = delay;
-        // }, 41.666 );
-        //
-        // document.addEventListener('scroll', (e) => {
-        //     let pos = document.documentElement.scrollTop;
-        //     let calcHeight =
-        //         document.documentElement.scrollHeight -
-        //         document.documentElement.clientHeight;
-        //
-        //     let scrollValue = ((pos * 100) / (calcHeight * 0.45))
-        //     let duration = video_1.duration;
-        //     video_progress = (scrollValue * ( duration / 100))
-        //
-        //     if (( scrollValue * (duration / 100) ) > 8.3 ) {
-        //         $(video_1).addClass('zoomInExit')
-        //     } else {
-        //         $( video_1 ).removeClass('zoomInExit')
-        //     }
-        // })
+         return {
+             frameCount: frameCount,
+             images: images,
+             context: context
+         }   
+        }
 
+        const updateCanvasFrame = (event, canvas) => {
+            const scrollFraction = event.progress;
+            const frameIndex = Math.min(
+                canvas.frameCount - 1,
+                Math.floor( scrollFraction * canvas.frameCount )
+            );
+            requestAnimationFrame( () => {
+                let frame = canvas.images[ frameIndex + 1 ] ;
+                canvas.context.clearRect( 0, 0, window.innerWidth, window.innerHeight );
+                frame && canvas.context.drawImage( frame, 0, 0 )
+            } );
+        }
+        
+        
+        // // Scroll interactions
+        // const html = document.getElementsByTagName( 'html' );
+        //
+        // window.addEventListener( 'scroll', () => {
+        //     const scrollTop = html[ 0 ].scrollTop;
+        //     // console.log('scrollTop: ', scrollTop);
+        //     // console.log('html.scrollHeight: ', html[0].scrollHeight);
+        //     // console.log('window.innerHeight: ', window.innerHeight);
+        //     const maxScrollTop = (html[ 0 ].scrollHeight - window.innerHeight) * 0.8;
+        //     // console.log('maxScrollTop: ', maxScrollTop);
+        //     const scrollFraction = (scrollTop) / maxScrollTop;
+        //     // console.log('scrollFraction: ', scrollFraction);
+        //     const frameIndex = Math.min(
+        //         canvas.frameCount - 1,
+        //         Math.floor( scrollFraction * canvas.frameCount )
+        //     );
+        //     // console.log('FrameIndex', frameIndex);
+        //
+        //     if ( frameIndex > 0) {
+        //         $( ".product-vid" ).addClass( 'fadeIn' )
+        //         requestAnimationFrame( () => {
+        //             let frameindex = canvas.images[ frameIndex + 1 ];
+        //             frameindex && canvas.context.drawImage( frameindex, 0, 0 )
+        //         } );
+        //     } else {
+        //         $( ".product-vid" ).removeClass( 'fadeIn' )
+        //     }
+        // } );
+      
+       
         //Der blevet brugt scroll magic hver gang "new ScrollMagic.Scene" er i spil.//
 
+        document.querySelector('.hero-section__video').addEventListener( "timeupdate", function () {
+            if ( this.currentTime >= 2  ) {
+                $( '.section-2' ).addClass('active')
+            }
+            if ( this.currentTime >= 4 ) {
+                this.pause();
+            }
+        } );
+
+
+        const canvas = setupCanvas( document.querySelector( ".canvas" ), 1374, "trimmer-sequence", 'png' )
         new ScrollMagic.Scene({
+            duration: $("#index").height(),
+            triggerHook: "onCenter",
+            triggerElement: $('.hero-section'),
+            offset: $('.nav').height()
+        } )
+            .on( 'progress', (event) => {
+                updateCanvasFrame(event, canvas)
+            } )
+            .addTo( controller )
+            
+            
+         new ScrollMagic.Scene({
             duration: "100%",
             triggerHook: "onCenter",
             triggerElement: $('.hero-section'),
@@ -105,35 +118,27 @@ $(document).ready( () => {
             offset: $('.nav').height()
         })
             //.setClassToggle( $( video_1 ), 'animate__animated animate__slideInUp' )
-
             .addTo(controller)
         // slide slogns ind
-        new ScrollMagic.Scene({
-            duration: "100%",
-            triggerElement: $('#slogan-1'),
-            triggerHook: 0.45,
-        })
-            .setClassToggle($('.section-2'), 'active')
-            .addTo(controller);
+        // new ScrollMagic.Scene({
+        //     duration: "100%",
+        //     triggerElement: $('#slogan-1'),
+        //     triggerHook: 0.45,
+        // })
+        //     .setClassToggle($('.section-2'), 'active')
+        //     .addTo(controller);
 
         // slide the sliding-logo on scroll
         let slidingTimeline = new TimelineMax();
-        slidingTimeline.fromTo($('.sliding-logo'), 1, {x: `-100%`}, {x: 0})
+        slidingTimeline.fromTo($('.sliding-logo'), 1, {x: `-100%`}, {x: "100%"})
         new ScrollMagic.Scene({
-            duration: "70%",
+            duration: "100%",
             triggerElement: $('.sliding-logo'),
             triggerHook: "onEnter",
         })
             .setTween(slidingTimeline)
             .addTo(controller);
-        //pin the sliding logo to screen
-        new ScrollMagic.Scene({
-            duration: "100%",
-            triggerElement: $('.sliding-logo'),
-            triggerHook: 0.4,
-        })
-            .setPin($('.sliding-logo'))
-            .addTo(controller);
+       
 
         //make sliding-logo fade out change color of the body
         let fadeoverTimeline = new TimelineMax();
@@ -143,21 +148,21 @@ $(document).ready( () => {
         new ScrollMagic.Scene({
             duration: "100%",
             triggerElement: $('.fadeover'),
-            triggerHook: "onEnter",
+            triggerHook: "onCenter",
         })
             .setTween(fadeoverTimeline)
             .addTo(controller);
 
         //make sliding-logo grow
-        let section3Timeline = new TimelineMax()
-        section3Timeline.to( $( '.sliding-logo' ), {scale: 11.8} )
-        new ScrollMagic.Scene( {
-            duration: "100%",
-            triggerElement: $( '.sliding-logo' ),
-            triggerHook: 0.4,
-        } )
-            .setTween( section3Timeline )
-            .addTo( controller );
+        // let section3Timeline = new TimelineMax()
+        // section3Timeline.to( $( '.sliding-logo' ), {scale: 11.8} )
+        // new ScrollMagic.Scene( {
+        //     duration: "100%",
+        //     triggerElement: $( '.sliding-logo' ),
+        //     triggerHook: 0.4,
+        // } )
+        //     .setTween( section3Timeline )
+        //     .addTo( controller );
 
 
         // fade the circles in and then fade text with lines
@@ -167,51 +172,50 @@ $(document).ready( () => {
         timelineForSection4.fromTo($('.circle'), {scale: 0.8, opacity: 0}, {scale: 1, opacity: 1},".6")
         timelineForSection4.fromTo($('.product-name'), {opacity: 0, x: -300}, {opacity: 1, x: 0})
         timelineForSection4.fromTo($('#lines'), {opacity: 0, width: 0}, {opacity: 1, width: "33%"}, "<")
-    if ( !screenSizeMD ) {
+        
+        triggerHook = !isSmallerThanMD ? .175 : .3;
         new ScrollMagic.Scene({
-            duration: "80%",
+            duration: "100%",
             triggerElement: $('.section-4'),
-            triggerHook: .175
+            triggerHook: triggerHook
         })
             .setPin($('.section-4'))
             .setTween(timelineForSection4)
             .addTo(controller);
-    } else {
-        new ScrollMagic.Scene( {
-            duration: "80%",
-            triggerElement: $( '.section-4' ),
-            triggerHook: .3
-        } )
-            .setPin( $( '.section-4' ) )
-            .setTween( timelineForSection4 )
-            .addTo( controller );
-    }
+    
         // create a scene for sectione 5
         let timelineForSection5 = new TimelineMax();
-        timelineForSection5.from($('.info-container__blade-icon'), {opacity:0, x: 100})
-        timelineForSection5.from($('.info-container__title'), {opacity:0, x: 100}, ".2")
-        timelineForSection5.from($('.info-container__text'), {opacity:0, x: 100}, ".4")
+        timelineForSection5.from($('.info-container__blade-icon'), {autoAlpha:0, x: 100})
+        timelineForSection5.to( $( '.canvas' ), {x: "-25%"}, "<" )
+        timelineForSection5.from($('.info-container__title'), {autoAlpha:0, x: 100}, ".2")
+        timelineForSection5.from($('.info-container__text'), {autoAlpha:0, x: 100}, ".4")
+        timelineForSection5.to( $( '.section-5' ), {autoAlpha: 0, y: "-10%"});
 
+        triggerHook = !isSmallerThanMD ? 0. : .1;
+        
         new ScrollMagic.Scene({
-            duration: "50%",
-            triggerElement: $('.info-container'),
-            triggerHook: "onEnter",
+            duration: "100%",
+            triggerElement: $( '.section-5' ),
+            triggerHook: triggerHook,
         })
+            .setPin( $( '.section-5' ))
             .setTween(timelineForSection5)
             .addTo(controller); // assign the scene to the controller
 
     // create a scene for sectione 6
     let timelineForSection6 = new TimelineMax();
-    timelineForSection6.from($('.info-container__blade-icon_1'), {opacity:0, x: -100})
-    timelineForSection6.from($('.info-container__title_1'), {opacity:0, x: -100}, ".2")
-    timelineForSection6.from($('.info-container__text_1'), {opacity:0, x: -100}, ".4")
-
+    timelineForSection6.from($('.info-container_1__blade-icon'), {autoAlpha:0, x: -100})
+    timelineForSection6.to( $( '.canvas' ), {x: "50%"}, "<")
+    timelineForSection6.from($('.info-container_1__title'), {autoAlpha:0, x: -100}, ".2")
+    timelineForSection6.from($('.info-container_1__text'), {autoAlpha:0, x: -100}, ".4");
+    timelineForSection6.to($('.section-6'), {autoAlpha:0, y: "-10%"});
+    
     new ScrollMagic.Scene({
-        duration: "50%",
-        triggerElement: $('.info-container_1'),
-        triggerHook: "onEnter",
+        duration: "100%",
+        triggerElement: $('.section-6'),
+        triggerHook: triggerHook,
     })
-
+        .setPin( $( '.section-6' ) )
         .setTween(timelineForSection6)
         .addTo(controller); // assign the scene to the controller
 
@@ -236,25 +240,15 @@ $(document).ready( () => {
         slideStatisticsIn.from( $( '.scale-wrapper-2' ), {opacity: 0, scale: ".75"}, '0.5')
         slideStatisticsIn.from( $( '.scale-wrapper-3' ), {opacity: 0, scale: ".75"}, '0.6')
 
-        if ( screenSizeMD ) {
-            new ScrollMagic.Scene( {
-                duration: "100%",
-                triggerElement: $( '.section-8' ),
-                triggerHook: .1,
-            } )
-                .setTween( slideStatisticsIn )
-                .setPin( $( '.section-8 .row' ) )
-                .addTo( controller );
-        } else {
-            new ScrollMagic.Scene( {
-                duration: "100%",
-                triggerElement: $( '.section-8' ),
-                triggerHook: .2,
-            } )
-                .setTween( slideStatisticsIn )
-                .setPin( $( '.section-8 .row' ) )
-                .addTo( controller );
-        }
+        triggerHook = !isSmallerThanMD ? .2 : .05;
+        new ScrollMagic.Scene( {
+            duration: "100%",
+            triggerElement: $( '.section-8' ),
+            triggerHook: triggerHook,
+        } )
+            .setTween( slideStatisticsIn )
+            .setPin( $( '.section-8 .row' ) )
+            .addTo( controller );
     }
 
     if ($('#ourVision').length > 0) {
