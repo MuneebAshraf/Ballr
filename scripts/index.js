@@ -30,7 +30,6 @@ $(document).ready( () => {
             const img = new Image();
             img.src = currentFrame( path, 1 , fileType);
             img.onload = function () {
-                context.clearRect( 0, 0, width, height );
                 context.drawImage( img, 0, 0 ); // destination rectangle
             }
             
@@ -42,14 +41,16 @@ $(document).ready( () => {
         }
 
         const updateCanvasFrame = (event, canvas) => {
-            const scrollFraction = event.progress;
+            // const scrollFraction = event.progress;
+            const scrollFraction = (event.scrollPos - event.startPos) / (event.endPos - event.startPos);
             const frameIndex = Math.min(
                 canvas.frameCount - 1,
                 Math.floor( scrollFraction * canvas.frameCount )
             );
             requestAnimationFrame( () => {
                 let frame = canvas.images[ frameIndex + 1 ] ;
-                canvas.context.clearRect( 0, 0, window.innerWidth, window.innerHeight );
+                console.log( frameIndex)
+                 canvas.frameCount -1 > frameIndex && canvas.context.clearRect( 0, 0, window.innerWidth, window.innerHeight );
                 frame && canvas.context.drawImage( frame, 0, 0 )
             } );
         }
@@ -100,13 +101,15 @@ $(document).ready( () => {
         const canvas = setupCanvas( document.querySelector( ".canvas" ), 1374, "trimmer-sequence", 'png' )
         new ScrollMagic.Scene({
             duration: $("#index").height(),
-            triggerHook: "onCenter",
-            triggerElement: $('.hero-section'),
-            offset: $('.nav').height()
+            triggerHook: "onEnter",
+            triggerElement: $('.fadeover.gold-to-white'),
+            offset: $( '.hero-section' ).height()
         } )
-            .on( 'progress', (event) => {
+            .on( 'update', (event) => {
+                console.log(event)
                 updateCanvasFrame(event, canvas)
             } )
+            .setClassToggle( $('.product-vid') ,'fadeIn')
             .addTo( controller )
             
             
@@ -115,7 +118,6 @@ $(document).ready( () => {
             triggerHook: "onCenter",
             triggerElement: $('.hero-section'),
             reverse: false,
-            offset: $('.nav').height()
         })
             //.setClassToggle( $( video_1 ), 'animate__animated animate__slideInUp' )
             .addTo(controller)
@@ -186,7 +188,7 @@ $(document).ready( () => {
         // create a scene for sectione 5
         let timelineForSection5 = new TimelineMax();
         timelineForSection5.from($('.info-container__blade-icon'), {autoAlpha:0, x: 100})
-        timelineForSection5.to( $( '.canvas' ), {x: "-25%"}, "<" )
+        timelineForSection5.to( $( '.canvas' ), {x: "-=25%"}, "<" )
         timelineForSection5.from($('.info-container__title'), {autoAlpha:0, x: 100}, ".2")
         timelineForSection5.from($('.info-container__text'), {autoAlpha:0, x: 100}, ".4")
         timelineForSection5.to( $( '.section-5' ), {autoAlpha: 0, y: "-10%"});
@@ -205,7 +207,7 @@ $(document).ready( () => {
     // create a scene for sectione 6
     let timelineForSection6 = new TimelineMax();
     timelineForSection6.from($('.info-container_1__blade-icon'), {autoAlpha:0, x: -100})
-    timelineForSection6.to( $( '.canvas' ), {x: "50%"}, "<")
+    timelineForSection6.to( $( '.canvas' ), {x: "+=50%"}, "<")
     timelineForSection6.from($('.info-container_1__title'), {autoAlpha:0, x: -100}, ".2")
     timelineForSection6.from($('.info-container_1__text'), {autoAlpha:0, x: -100}, ".4");
     timelineForSection6.to($('.section-6'), {autoAlpha:0, y: "-10%"});
@@ -232,6 +234,7 @@ $(document).ready( () => {
 
         //fade in effect when entering "Section-8"
         let slideStatisticsIn = new TimelineMax();
+        slideStatisticsIn.to( $( '.canvas' ), {x: "-=25%"})
         slideStatisticsIn.from( $( '.statistics-title' ), {opacity: 0, x: "-10%"} )
         slideStatisticsIn.from( $( '.statistics-body' ), {opacity: 0, x: "-10%"}, '0.1')
         slideStatisticsIn.from( $( '.statistics-imgs' ), {opacity: 0, x: "-10%"}, '0.2')
