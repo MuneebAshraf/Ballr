@@ -24,7 +24,7 @@ $(document).ready( () => {
 
             // Draw the first image
             const img = new Image();
-            img.src = currentFrame( path, 1 , fileType);
+            // img.src = currentFrame( path, 1 , fileType);
             img.onload = function () {
                 canvas.width = this.width;
                 canvas.height = this.height;
@@ -108,19 +108,38 @@ $(document).ready( () => {
             .setClassToggle( $('.product-vid') ,'fadeIn')
             .addTo( controller )
 
+        
+        let heroSlogansTimeline = anime.timeline({
+            easing: 'easeOutExpo',
+        });
+        heroSlogansTimeline.add({
+            targets: '#slogan-1',
+            translateY: ['35%', '0%'],
+            opacity: ['0', '1']
+        })
+        // heroSlogansTimeline.add( {
+        //     targets: '#slogan-1',
+        //     translateY: ['10%', '-10%'],
+        // } )
+        heroSlogansTimeline.add( {
+            targets: '#slogan-1',
+            translateY: ['0%', '-35%'],
+            opacity: ['1', '0']
+        } )
+        
         let heroTimeline = new TimelineMax();
-        heroTimeline.fromTo( $('#slogan-1'), {autoAlpha: 0, y: "35%"}, {autoAlpha: 1, y: "10%"} )
-        heroTimeline.to( $('#slogan-1'), {y: "-10%"})
-        heroTimeline.to( $('#slogan-1'), {y: "-35%", autoAlpha: 0 })
-        heroTimeline.fromTo( $('#slogan-2'), {autoAlpha: 0, y: "35%"}, {autoAlpha: 1, y: "10%"} )
-        heroTimeline.to( $('#slogan-2'), {y: "-10%"})
-        heroTimeline.to( $('#slogan-2'), {y: "-35%", autoAlpha: 0 })
-        heroTimeline.fromTo( $('#slogan-3'), {autoAlpha: 0, y: "35%"}, {autoAlpha: 1, y: "10%"} )
-        heroTimeline.to( $('#slogan-3'), {y: "-10%"})
-        heroTimeline.to( $('#slogan-3'), {y: "-35%", autoAlpha: 0 })
-        heroTimeline.fromTo( $('#slogan-4'), {autoAlpha: 0, y: "35%"}, {autoAlpha: 1, y: "10%"} )
-        heroTimeline.to( $('#slogan-4'), {y: "-10%"})
-        heroTimeline.to( $('#slogan-4'), {y: "-35%", autoAlpha: 0 })
+        // heroTimeline.fromTo( $('#slogan-1'), {autoAlpha: 0, y: "35%"}, {autoAlpha: 1, y: "10%"} )
+        // heroTimeline.to( $('#slogan-1'), {y: "-10%"})
+        // heroTimeline.to( $('#slogan-1'), {y: "-35%", autoAlpha: 0 })
+        // heroTimeline.fromTo( $('#slogan-2'), {autoAlpha: 0, y: "35%"}, {autoAlpha: 1, y: "10%"} )
+        // heroTimeline.to( $('#slogan-2'), {y: "-10%"})
+        // heroTimeline.to( $('#slogan-2'), {y: "-35%", autoAlpha: 0 })
+        // heroTimeline.fromTo( $('#slogan-3'), {autoAlpha: 0, y: "35%"}, {autoAlpha: 1, y: "10%"} )
+        // heroTimeline.to( $('#slogan-3'), {y: "-10%"})
+        // heroTimeline.to( $('#slogan-3'), {y: "-35%", autoAlpha: 0 })
+        // heroTimeline.fromTo( $('#slogan-4'), {autoAlpha: 0, y: "35%"}, {autoAlpha: 1, y: "10%"} )
+        // heroTimeline.to( $('#slogan-4'), {y: "-10%"})
+        // heroTimeline.to( $('#slogan-4'), {y: "-35%", autoAlpha: 0 })
          const heroCanvas = setupCanvas(document.querySelector('.hero-section__canvas'), 103, 'trimmer-hero', 'png')
          new ScrollMagic.Scene({
             duration: "200%",
@@ -183,7 +202,7 @@ $(document).ready( () => {
         
         new ScrollMagic.Scene({
             duration: "50%",
-            triggerElement: $('.fadeover'),
+            triggerElement: $('.section-4'),
             triggerHook: "onEnter",
         })
             .setTween(fadeoverTimeline)
@@ -280,11 +299,11 @@ $(document).ready( () => {
         triggerHook = !isSmallerThanMD ? .2 : .05;
         new ScrollMagic.Scene( {
             duration: "200%",
-            triggerElement: $( '.section-8' ),
+            triggerElement: $( '.statistics' ),
             triggerHook: triggerHook,
         } )
             .setTween( slideStatisticsIn )
-            .setPin( $( '.section-8 .row' ) )
+            .setPin( $( '.statistics .row' ) )
             .addTo( controller );
     }
 
