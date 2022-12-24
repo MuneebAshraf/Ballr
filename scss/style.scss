@@ -1,5 +1,5 @@
 @import "variables";
-@import "Brooklyn-font";
+@import "brooklyn-font";
 @import "boostrap/bootstrap";
 @import "boostrap/bootstrap-grid";
 @import "boostrap/bootstrap-reboot";
@@ -257,12 +257,13 @@ nav.navbar {
     position: relative;
 
     .sliding-logo {
-      position: relative;
+      position: absolute;
       color: transparent;
       -webkit-text-stroke-width: 3px;
       -webkit-text-stroke-color: $gold;
       grid-column: 1 / -1;
       grid-row: 5 / -1;
+      transform: translateX(-150%);
 
       p {
         font-family: Brooklyn-Bold, sans-serif;
