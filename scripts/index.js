@@ -97,10 +97,10 @@ $(document).ready( () => {
 
         const canvas = setupCanvas( document.querySelector( ".canvas" ), 1374, "trimmer-sequence", 'png' )
         new ScrollMagic.Scene({
-            duration: $("#index").height() - ($( '.section-7' ).height() + $( '.footer' ).height() ),
+            duration: $("#index").height() - ($( '.section-11' ).height() + $( '.footer' ).height() ),
             triggerHook: .9,
             triggerElement: $('.reveal'),
-            offset: $( '.sliding-logo' ).height()
+            offset: $( '.sliding-logo' ).height() + 500
         })
             .on( 'update', (event) => {
                 updateCanvasFrame(event, canvas)
@@ -148,20 +148,26 @@ $(document).ready( () => {
         // slide the sliding-logo on scroll
         let scaleUpTimeline = new TimelineMax();
         const slidingLogo = document.querySelector('.sliding-logo')
-        scaleUpTimeline.to( slidingLogo, 1, {translateX: '5%'})
+        scaleUpTimeline.from( slidingLogo, {x: '-150%'} )
+        scaleUpTimeline.to( $('.sliding-logo .hollow'), .05 , {opacity: 0} )
+        // scaleUpTimeline.to( slidingLogo, {transform: 'matrix3d(1, 0, 0, 0, 0, 6.12323e-17, -1, 0, 0, 1, 6.12323e-17, 0, 0, 128.5, 0, 1)'} )
+        scaleUpTimeline.to( slidingLogo, {opacity: 0, transform: 'matrix3d(5,-0.3,0.00,0.00,0.3,5,0.00,-40,0,0,1,0,0,0,0,1)'}, '<')
+        //falling matrix scaleUpTimeline.to( slidingLogo, {opacity: 0, transform: 'matrix3d(2.49995, 0, 0, 0, 0, 2.28383, -1.01679, 0, 0, 0.406723, 0.913552, 0, 0, 99.9964, 0, 1)'}, '<')
+        scaleUpTimeline.to( $( 'body' ), {backgroundColor: "#C8B090"}, '<' )
+        scaleUpTimeline.to( $( 'body' ), {backgroundColor: "#F6F4EF"}, '>' )
+        
         new ScrollMagic.Scene({
             duration: "100%",
-            triggerElement: slidingLogo,
-            triggerHook: "onEnter",
+            triggerElement: '.section-3 .row',
+            triggerHook: .35 ,
         })
+            .setPin($('.section-3 .row'))
             .setTween( scaleUpTimeline)
             .addTo(controller);
         
         //make sliding-logo fade out change color of the body
         let fadeoverTimeline = new TimelineMax();
-        fadeoverTimeline.to($('.sliding-logo'), 2, {opacity:0})
-        fadeoverTimeline.to($('body'), 2, {backgroundColor: "#C8B090"}, '<')
-        fadeoverTimeline.to($('body'), .5, {backgroundColor: "#F6F4EF"}, '>')
+        // fadeoverTimeline.to($('.sliding-logo'), 2, {opacity:0})
         
         new ScrollMagic.Scene({
             duration: "50%",
@@ -186,6 +192,7 @@ $(document).ready( () => {
         // fade the circles in and then fade text with lines
         let timelineForSection4 = new TimelineMax();
         timelineForSection4.fromTo($('.product-container.ring'), {scale: 0.8, autoAlpha: 0}, {scale: 1, autoAlpha: 1}, ".2")
+        timelineForSection4.to( $( '.canvas' ), {height: "-=50%"}, "<" )
         timelineForSection4.fromTo($('.inner.ring'), {scale: 0.8, autoAlpha: 0}, {scale: 1, autoAlpha: 1}, ".4")
         timelineForSection4.fromTo($('.circle'), {scale: 0.8, autoAlpha: 0}, {scale: 1, autoAlpha: 1},".6")
         timelineForSection4.fromTo($('.product-name'), {autoAlpha: 0, x: -300}, {autoAlpha: 1, x: 0})
@@ -193,7 +200,7 @@ $(document).ready( () => {
         
         triggerHook = !isSmallerThanMD ? .175 : .3;
         new ScrollMagic.Scene({
-            duration: $( '.section-4' ).height(),
+            duration: "100%",
             triggerElement: $('.section-4'),
             triggerHook: triggerHook
         })
@@ -203,16 +210,16 @@ $(document).ready( () => {
 
         // create a scene for sectione 5
         let timelineForSection5 = new TimelineMax();
-        timelineForSection5.from($('.info-container__blade-icon'), {autoAlpha:0, x: 100})
-        timelineForSection5.from($('.info-container__title'), {autoAlpha:0, x: 100}, ".2")
-        timelineForSection5.from($('.info-container__text'), {autoAlpha:0, x: 100}, ".4")
+        // timelineForSection5.from($('.info-container__blade-icon'), {autoAlpha:0, x: 100})
+        // timelineForSection5.from($('.info-container__title'), {autoAlpha:0, x: 100}, ".2")
+        // timelineForSection5.from($('.info-container__text'), {autoAlpha:0, x: 100}, ".4")
         timelineForSection5.to( $( '.section-5' ), {autoAlpha: 0, y: "-10%"});
-        timelineForSection5.to( $( '.canvas' ), {x: "-=25%", height: "60%"}, ".1" )
+        timelineForSection5.to( $( '.canvas' ), {x: "-=25%"}, ".1" )
 
         triggerHook = !isSmallerThanMD ? 0. : .1;
         
         new ScrollMagic.Scene({
-            duration: $( '.section-5' ).height(),
+            duration: "100%",
             triggerElement: $( '.section-5' ),
             triggerHook: triggerHook,
         })

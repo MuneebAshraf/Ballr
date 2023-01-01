@@ -252,18 +252,18 @@ nav.navbar {
     @include media-breakpoint-up(md) {
       height: calc((100vh - 104px) * 2);
     }
-    white-space: nowrap;
-    overflow: hidden;
-    position: relative;
-
+    .row {
+      perspective: 300px;
+    }
     .sliding-logo {
-      position: absolute;
+      transform-style: preserve-3d;
       color: transparent;
       -webkit-text-stroke-width: 3px;
       -webkit-text-stroke-color: $gold;
-      grid-column: 1 / -1;
-      grid-row: 5 / -1;
-      transform: translateX(-150%);
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+      backface-visibility: hidden;
 
       p {
         font-family: Brooklyn-Bold, sans-serif;
@@ -271,7 +271,7 @@ nav.navbar {
         display: inline-block;
       }
 
-      p:nth-child(odd) {
+      p:nth-child(even) {
         color: $gold;
         text-shadow: none;
       }
@@ -295,13 +295,13 @@ nav.navbar {
       .product-name-container {
         grid-row: 1 / span 1;
         grid-column: 1 / -1;
-        width: 100%;
         display: flex;
         flex-direction: row;
 
         .product-name {
           color: $background;
           font-size: clamp(2rem, 5vw + 1rem, 7rem);
+          font-weight: bold;
           z-index: 1;
           text-transform: uppercase;
           background: linear-gradient(269.86deg, $blue 0.12%, $gold 105.11%);
@@ -479,7 +479,9 @@ nav.navbar {
     }
 
     &__title {
-      font-size: clamp(2rem, 5vw + 1rem, 7rem);
+      font-weight: bold;
+      font-size: clamp(2rem, 5vw + 1rem, 3rem);
+      text-transform: uppercase;
     }
 
     &__text {
@@ -525,7 +527,9 @@ nav.navbar {
     }
 
     &__title {
-      font-size: clamp(2rem, 5vw + 1rem, 7rem);
+      font-weight: bold;
+      font-size: clamp(2rem, 5vw + 1rem, 3rem);
+      text-transform: uppercase;
     }
 
     &__text {
