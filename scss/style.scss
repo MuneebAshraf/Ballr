@@ -197,6 +197,22 @@ nav.navbar {
       span {
         color: $gold;
       }
+
+    }
+
+    .lottie-player {
+      min-width: 200px;
+      max-width: 300px;
+      min-height: 200px;
+      max-height: 300px;
+      position: fixed;
+      top: 85%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
     }
 
 
@@ -462,6 +478,7 @@ nav.navbar {
     flex-direction: column;
     max-width: 75%;
     justify-self: end;
+    color: black;
 
     &__blade-icon {
       display: flex;
@@ -510,6 +527,7 @@ nav.navbar {
     grid-area: 2 / 4 / span 3 / span 2;
     display: flex;
     flex-direction: column;
+    color: black;
 
     &__icon {
       display: flex;

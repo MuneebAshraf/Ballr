@@ -97,7 +97,7 @@ $(document).ready( () => {
 
         const canvas = setupCanvas( document.querySelector( ".canvas" ), 1374, "trimmer-sequence", 'png' )
         new ScrollMagic.Scene({
-            duration: $("#index").height() - ($( '.section-11' ).height() + $( '.footer' ).height() ),
+            duration: $("#index").height() - ($( '.statistics' ).height() + $( '.footer' ).height() ),
             triggerHook: .9,
             triggerElement: $('.reveal'),
             offset: $( '.sliding-logo' ).height() + 500
@@ -109,9 +109,11 @@ $(document).ready( () => {
             .addTo( controller )
 
         let heroTimeline = new TimelineMax();
-        heroTimeline.fromTo( $('#slogan-1'), {autoAlpha: 0, y: "35%"}, {autoAlpha: 1, y: "10%"} )
+        // heroTimeline.fromTo( $('#slogan-1'), {autoAlpha: 0, y: "35%"}, {autoAlpha: 1, y: "10%"} )
+        heroTimeline.to( $( '#slogan-1' ), {y: "-10%"} )
         heroTimeline.to( $('#slogan-1'), {y: "-10%"})
         heroTimeline.to( $('#slogan-1'), {y: "-35%", autoAlpha: 0 })
+        heroTimeline.to( $( '.lottie-player' ), {autoAlpha: 0}, '<' )
         heroTimeline.fromTo( $('#slogan-2'), {autoAlpha: 0, y: "35%"}, {autoAlpha: 1, y: "10%"} )
         heroTimeline.to( $('#slogan-2'), {y: "-10%"})
         heroTimeline.to( $('#slogan-2'), {y: "-35%", autoAlpha: 0 })
@@ -149,15 +151,13 @@ $(document).ready( () => {
         let scaleUpTimeline = new TimelineMax();
         const slidingLogo = document.querySelector('.sliding-logo')
         scaleUpTimeline.from( slidingLogo, {x: '-150%'} )
-        scaleUpTimeline.to( $('.sliding-logo .hollow'), .05 , {opacity: 0} )
-        // scaleUpTimeline.to( slidingLogo, {transform: 'matrix3d(1, 0, 0, 0, 0, 6.12323e-17, -1, 0, 0, 1, 6.12323e-17, 0, 0, 128.5, 0, 1)'} )
+        scaleUpTimeline.to( $('.sliding-logo .hollow') , {opacity: 0}, '>' )
         scaleUpTimeline.to( slidingLogo, {opacity: 0, transform: 'matrix3d(5,-0.3,0.00,0.00,0.3,5,0.00,-40,0,0,1,0,0,0,0,1)'}, '<')
-        //falling matrix scaleUpTimeline.to( slidingLogo, {opacity: 0, transform: 'matrix3d(2.49995, 0, 0, 0, 0, 2.28383, -1.01679, 0, 0, 0.406723, 0.913552, 0, 0, 99.9964, 0, 1)'}, '<')
         scaleUpTimeline.to( $( 'body' ), {backgroundColor: "#C8B090"}, '<' )
         scaleUpTimeline.to( $( 'body' ), {backgroundColor: "#F6F4EF"}, '>' )
         
         new ScrollMagic.Scene({
-            duration: "100%",
+            duration: "300%",
             triggerElement: '.section-3 .row',
             triggerHook: .35 ,
         })
@@ -177,18 +177,6 @@ $(document).ready( () => {
             .setTween(fadeoverTimeline)
             .addTo(controller);
 
-        //make sliding-logo grow
-        // let section3Timeline = new TimelineMax()
-        // section3Timeline.to( $( '.sliding-logo' ), {scale: 11.8})
-        // new ScrollMagic.Scene( {
-        //     duration: "100%",
-        //     triggerElement: $( '.sliding-logo' ),
-        //     triggerHook: 0.4,
-        // } )
-        //     .setTween( section3Timeline )
-        //     .addTo( controller );
-
-
         // fade the circles in and then fade text with lines
         let timelineForSection4 = new TimelineMax();
         timelineForSection4.fromTo($('.product-container.ring'), {scale: 0.8, autoAlpha: 0}, {scale: 1, autoAlpha: 1}, ".2")
@@ -200,56 +188,133 @@ $(document).ready( () => {
         
         triggerHook = !isSmallerThanMD ? .175 : .3;
         new ScrollMagic.Scene({
-            duration: "100%",
+            duration: "150%",
             triggerElement: $('.section-4'),
             triggerHook: triggerHook
         })
-            .setPin($('.section-4'))
+            .setPin($('.section-4'), {pushFollowers: false})
             .setTween(timelineForSection4)
             .addTo(controller);
 
         // create a scene for sectione 5
         let timelineForSection5 = new TimelineMax();
-        // timelineForSection5.from($('.info-container__blade-icon'), {autoAlpha:0, x: 100})
-        // timelineForSection5.from($('.info-container__title'), {autoAlpha:0, x: 100}, ".2")
-        // timelineForSection5.from($('.info-container__text'), {autoAlpha:0, x: 100}, ".4")
+        timelineForSection5.to( $( '.canvas' ), {x: "-=50%"}, ".1" )
+        timelineForSection5.from($('.section-5 .info-container-right__blade-icon'), {autoAlpha:0, x: 100})
+        timelineForSection5.from($('.section-5 .info-container-right__title'), {autoAlpha:0, x: 100}, ".2")
+        timelineForSection5.from($('.section-5 .info-container-right__text'), {autoAlpha:0, x: 100}, ".4")
         timelineForSection5.to( $( '.section-5' ), {autoAlpha: 0, y: "-10%"});
-        timelineForSection5.to( $( '.canvas' ), {x: "-=25%"}, ".1" )
+        timelineForSection5.to( $( '.canvas' ), {x: "+=50%"})
 
         triggerHook = !isSmallerThanMD ? 0. : .1;
         
         new ScrollMagic.Scene({
-            duration: "100%",
+            duration: "200%",
             triggerElement: $( '.section-5' ),
             triggerHook: triggerHook,
         })
-            .setPin( $( '.section-5' ))
+            .setPin( $( '.section-5' ), {pushFollowers: false})
             .setTween(timelineForSection5)
             .addTo(controller); // assign the scene to the controller
 
     // create a scene for sectione 6
     let timelineForSection6 = new TimelineMax();
-    timelineForSection6.from($('.info-container_1__blade-icon'), {autoAlpha:0, x: -100})
     timelineForSection6.to( $( '.canvas' ), {x: "+=50%"}, "<")
-    timelineForSection6.from($('.info-container_1__title'), {autoAlpha:0, x: -100}, ".2")
-    timelineForSection6.from($('.info-container_1__text'), {autoAlpha:0, x: -100}, ".4");
+    timelineForSection6.from($('.section-6 .info-container-left__blade-icon'), {autoAlpha:0, x: -100})
+    timelineForSection6.from($('.section-6 .info-container-left__title'), {autoAlpha:0, x: -100}, ".2")
+    timelineForSection6.from($('.section-6 .info-container-left__text'), {autoAlpha:0, x: -100}, ".4");
     timelineForSection6.to($('.section-6'), {autoAlpha:0, y: "-10%"});
-    timelineForSection6.to( $( '.canvas' ), {x: "-=25%", height: "100%"} )
+    timelineForSection6.to( $( '.canvas' ), {x: "-=50%"})
+    // timelineForSection6.to( $( '.canvas' ), {x: "-=25%", height: "100%"} )
     
     new ScrollMagic.Scene({
         duration: "200%",
         triggerElement: $('.section-6'),
         triggerHook: triggerHook,
     })
-        .setPin( $( '.section-6' ) )
+        .setPin( $( '.section-6' ))
         .setTween(timelineForSection6)
         .addTo(controller); // assign the scene to the controller
 
+    // create a scene for sectione 7
+    let timelineForSection7 = new TimelineMax();
+    timelineForSection7.to( $( '.canvas' ), {x: "-=50%"}, ".1" )
+    timelineForSection7.from( $( '.section-7 .info-container-right__blade-icon' ), {autoAlpha: 0, x: 100} )
+    timelineForSection7.from( $( '.section-7 .info-container-right__title' ), {autoAlpha: 0, x: 100}, ".2" )
+    timelineForSection7.from( $( '.section-7 .info-container-right__text' ), {autoAlpha: 0, x: 100}, ".4" )
+    timelineForSection7.to( $( '.section-7' ), {autoAlpha: 0, y: "-10%"} );
+    timelineForSection7.to( $( '.canvas' ), {x: "+=50%"} )
 
-        //make body change color when entering "Section-7"
+    triggerHook = !isSmallerThanMD ? 0. : .1;
+
+    new ScrollMagic.Scene( {
+        duration: "200%",
+        triggerElement: $( '.section-7' ),
+        triggerHook: triggerHook,
+    } )
+        .setPin( $( '.section-7' ), {pushFollowers: false} )
+        .setTween( timelineForSection7 )
+        .addTo( controller ); // assign the scene to the controller
+
+
+    // create a scene for sectione 8
+    let timelineForSection8 = new TimelineMax();
+    timelineForSection8.to( $( '.canvas' ), {x: "+=50%"}, '.1' )
+    timelineForSection8.from( $( '.section-8 .info-container-left__blade-icon' ), {autoAlpha: 0, x: -100} )
+    timelineForSection8.from( $( '.section-8 .info-container-left__title' ), {autoAlpha: 0, x: -100}, ".2" )
+    timelineForSection8.from( $( '.section-8 .info-container-left__text' ), {autoAlpha: 0, x: -100}, ".4" );
+    timelineForSection8.to( $( '.section-8' ), {autoAlpha: 0, y: "-10%"} );
+    timelineForSection8.to( $( '.canvas' ), {x: "-=50%"} )
+
+    new ScrollMagic.Scene( {
+        duration: "200%",
+        triggerElement: $( '.section-8' ),
+        triggerHook: triggerHook,
+    } )
+        .setPin( $( '.section-8' ), {pushFollowers: false} )
+        .setTween( timelineForSection8 )
+        .addTo( controller ); // assign the scene to the controller
+
+    // create a scene for sectione 9
+    let timelineForSection9 = new TimelineMax();
+    timelineForSection9.to( $( '.canvas' ), {x: "-=50%"}, ".1" )
+    timelineForSection9.from( $( '.section-9 .info-container-right__blade-icon' ), {autoAlpha: 0, x: 100} )
+    timelineForSection9.from( $( '.section-9 .info-container-right__title' ), {autoAlpha: 0, x: 100}, ".2" )
+    timelineForSection9.from( $( '.section-9 .info-container-right__text' ), {autoAlpha: 0, x: 100}, ".4" )
+    timelineForSection9.to( $( '.section-9' ), {autoAlpha: 0, y: "-10%"} );
+    timelineForSection9.to( $( '.canvas' ), {x: "+=50%"})
+
+    triggerHook = !isSmallerThanMD ? 0. : .1;
+
+    new ScrollMagic.Scene( {
+        duration: "200%",
+        triggerElement: $( '.section-9' ),
+        triggerHook: triggerHook,
+    } )
+        .setPin( $( '.section-9' ), {pushFollowers: false} )
+        .setTween( timelineForSection9 )
+        .addTo( controller ); // assign the scene to the controller
+
+    // create a scene for sectione 10
+    let timelineForSection10 = new TimelineMax();
+    timelineForSection10.to( $( '.canvas' ), {x: "+=50%"}, "0.1" )
+    timelineForSection10.from( $( '.section-10 .info-container-left__blade-icon' ), {autoAlpha: 0, x: -100} )
+    timelineForSection10.from( $( '.section-10 .info-container-left__title' ), {autoAlpha: 0, x: -100}, ".2" )
+    timelineForSection10.from( $( '.section-10 .info-container-left__text' ), {autoAlpha: 0, x: -100}, ".4" );
+    timelineForSection10.to( $( '.section-10' ), {autoAlpha: 0, y: "-10%"} );
+    timelineForSection10.to( $( '.canvas' ), {x: "-=50%", height: "+=50%"} )
+
+    new ScrollMagic.Scene( {
+        duration: "200%",
+        triggerElement: $( '.section-10' ),
+        triggerHook: triggerHook,
+    } )
+        .setPin( $( '.section-10' ), {pushFollowers: false} )
+        .setTween( timelineForSection10 )
+        .addTo( controller ); // assign the scene to the controller
+    
         new ScrollMagic.Scene({
             duration: "50%",
-            triggerElement: $('.section-7'),
+            triggerElement: $('.section-11'),
             triggerHook: "onCenter",
         })
             .setTween( TweenMax.to( $( 'body' ), {backgroundColor: "black"} ))
